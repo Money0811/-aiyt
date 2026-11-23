@@ -1,0 +1,58 @@
+{
+  "rss_feeds": [
+    {
+      "name": "OpenAI News",
+      "url": "https://openai.com/news/rss.xml",
+      "category": "official"
+    },
+    {
+      "name": "Google AI Blog",
+      "url": "https://blog.google/technology/ai/rss/",
+      "category": "official"
+    },
+    {
+      "name": "Google DeepMind Blog",
+      "url": "https://deepmind.google/blog/rss.xml",
+      "category": "official"
+    },
+    {
+      "name": "Hugging Face Blog",
+      "url": "https://huggingface.co/blog/feed.xml",
+      "category": "official"
+    },
+    {
+      "name": "TechCrunch AI",
+      "url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+      "category": "media"
+    },
+    {
+      "name": "The Verge AI",
+      "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
+      "category": "media"
+    },
+    {
+      "name": "MIT Technology Review AI",
+      "url": "https://www.technologyreview.com/topic/artificial-intelligence/feed",
+      "category": "media"
+    }
+  ],
+  "reddit_subreddits": [
+    "LocalLLaMA",
+    "MachineLearning"
+  ],
+  "hacker_news": {
+    "min_points": 50,
+    "limit": 20
+  },
+  "github_trending": {
+    "languages": ["", "python", "typescript"],
+    "limit": 15
+  },
+  "hf_daily_papers": {
+    "limit": 15
+  },
+  "anthropic_news": {
+    "url": "https://www.anthropic.com/news",
+    "limit": 10
+  }
+}

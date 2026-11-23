@@ -1,0 +1,21 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.python-version
+
+# Node / Remotion
+studio/node_modules/
+studio/out/
+out/
+dist/
+
+# Secrets & generated daily outputs
+.env
+client_secrets.json
+token.json
+output/
+tmp/
+tools/
+debug.log
+knowledge/human-meme-kb/

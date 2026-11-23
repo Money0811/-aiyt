@@ -1,0 +1,212 @@
+{
+  "date": "2026-11-23",
+  "date_display": "11月23日 · 星期一",
+  "date_short": "11.23 週一",
+  "channel_name": "哈Gemi早報",
+  "filtered_stats": {
+    "raw_total": 73,
+    "duplicated_with_history": 10,
+    "excluded_tutorials_or_offtopic": 19,
+    "columns_selected": 5,
+    "flash_selected": 6
+  },
+  "cover": {
+    "badge": "⚡ 11月23日 AI 晨間頭條",
+    "tag": "🔥 今日 AI 圈焦點",
+    "headline": "OpenAI 拋新指標談 AI 限速！",
+    "subheadline": "《以撒的結合》用 Suno AI 音樂遭負評轟炸撤換，Vibe Coding 席捲硬體裝置",
+    "bars": [
+      {
+        "label": "頭條焦點",
+        "color": "red",
+        "status": "OpenAI 困惑度指標 · HN 471 分"
+      },
+      {
+        "label": "開源與論文",
+        "color": "amber",
+        "status": "CLI-Anything 熱榜 · LLM 內建 CPU"
+      }
+    ],
+    "banner": "🚀 還有：Agent 蜂群挑戰 P vs. NP · 6 條產業與論文快訊！",
+    "character_image": "character/opening_normal.png",
+    "character_closed_image": "character/opening_normal_closed.png",
+    "character_mode": "normal",
+    "script": "早安喵！歡迎收看今天的哈Gemi早報！週一開工不憂鬱，5分鐘帶你速覽5大重磅專欄，還有6條不可錯過的產業與論文快訊！"
+  },
+  "agenda": {
+    "progress_badge": "今日目錄",
+    "header_title": "5 大專欄 ＋ 6 條快訊",
+    "estimated_duration": "03:45",
+    "character_image": "character/opening_normal.png",
+    "character_closed_image": "character/opening_normal_closed.png",
+    "character_mode": "normal",
+    "script": "先來看今天精選的5大專欄：第1條，OpenAI推出困惑度與智能新評估指標，首席科學家更談到該如何幫AI設下速限；第2條，《以撒的結合》被抓包偷用Suno AI音樂，遭玩家負評轟炸緊急撤換；第3條，Vibe Coding浪潮正席捲電視與相機等硬體裝置；第4條，GitHub代理技能與CLI-Anything開源榜爆發；第5條，前沿論文竟然直接把CPU編譯進LLM權重！最後還會快速掃過6條快訊，我們馬上開始！"
+  },
+  "columns": [
+    {
+      "index": 1,
+      "chapter_label": "1 OpenAI新指標與AI限速",
+      "header_title": "OpenAI 困惑度新指標與限速",
+      "tag_text": "HN 471 分熱議",
+      "tag_variant": "orange",
+      "card_type": "evidence_zoom",
+      "card_title": "原文 3x 放大",
+      "card_subtitle": "OpenAI 官方文章引爆 Hacker News 471 分與 327 則留言",
+      "source_snippet": "openai.com/index/perplexity-and-intelligence — 探討如何以困惑度（Perplexity）量化模型進展，建立跨團隊的 AI 能力評估標準。",
+      "zoom_label": "🔍 核心看點聚焦",
+      "zoom_content": "OpenAI 首席科學家同步向 TechCrunch 表示，想為 AI 發展設立「安全速限」，前提是全產業必須先對「如何測量速度」達成共識，否則一切監管都只是空談。",
+      "conclusion": "先把規矩立住 · 統一量化指標將成為未來 AI 安全監管的關鍵前提",
+      "character_image": "character/chibi_think.png",
+      "character_mode": "chibi",
+      "sources": [
+        "https://openai.com/index/perplexity-and-intelligence",
+        "https://techcrunch.com/2026/11/22/openais-chief-scientist-has-thoughts-on-how-to-limit-ai-development/"
+      ],
+      "script": "第1條專欄來看OpenAI的最新動作！OpenAI官方發表《困惑度與智能》長文，在Hacker News衝上471分、湧入327則討論，探討如何用困惑度統一衡量AI模型的能力進展。首席科學家也對TechCrunch直言，想幫AI發展設下安全速限，就得先把規矩立住，大家先對怎麼量測速度達成共識，才不會各說各話！",
+      "screenshot_image": "episode/screenshots/col_1.png"
+    },
+    {
+      "index": 2,
+      "chapter_label": "2 以撒的結合撤換AI音樂",
+      "header_title": "《以撒》撤換 Suno AI 音樂",
+      "tag_text": "社群炎上事件",
+      "tag_variant": "stamp",
+      "card_type": "quote_verdict",
+      "category_pill": "🎮 遊戲圈風波",
+      "stamp_text": "負評轟炸",
+      "card_title": "音軌藏 Suno 元資料被抓包！",
+      "card_subtitle": "《The Binding of Isaac: Repentance Plus》遭 Steam 玩家刷負評",
+      "verdict_text": "玩家拒絕工業代餐 · 開發商緊急下架 AI 生成配樂平息怒火",
+      "character_image": "character/chibi_chair.png",
+      "character_closed_image": "character/chibi_chair_closed.png",
+      "character_mode": "chibi",
+      "sources": [
+        "https://www.theverge.com/games/1039770/binding-of-isaac-ai-music"
+      ],
+      "script": "第2條專欄來看遊戲圈的一場大型翻車現場！經典獨立神作《以撒的結合》最新更新，被Reddit網友抓包某段遊戲配樂檔案裡竟然藏著Suno的元資料，消息一出立刻在Steam遭到玩家大規模負評轟炸。看來玩家對這種一聽就覺得不對勁的AI音樂完全不買單，逼得開發商只能火速把AI音軌全部撤換掉。",
+      "screenshot_image": "episode/screenshots/col_2.png"
+    },
+    {
+      "index": 3,
+      "chapter_label": "3 Vibe Coding席捲硬體",
+      "header_title": "Vibe Coding 攻佔日常硬體",
+      "tag_text": "產業趨勢觀察",
+      "tag_variant": "stamp",
+      "card_type": "screenshot_bullets",
+      "card_title": "從寫網頁到魔改家電 · 硬體駭客門檻歸零",
+      "card_subtitle": "The Verge 專欄深度剖析 · 2026-11-22",
+      "bullets": [
+        "Vibe Coding 正從純軟體延伸到電視、相機等消費性裝置",
+        "一般人只需自然語言描述，就能為舊硬體寫出客製化韌體與工具",
+        "硬體品牌過去仰賴的封閉生態與軟體護城河正面臨衝擊"
+      ],
+      "mini_stamp": "全民改機時代",
+      "character_image": "character/chibi_phone.png",
+      "character_mode": "chibi",
+      "sources": [
+        "https://www.theverge.com/column/1039139/vibe-coding-gadgets-tv-camera"
+      ],
+      "script": "第3條專欄來看一個超有趣的趨勢！過去大家說Vibe Coding大多是用來寫網頁或小App，但The Verge最新專欄指出，這股浪潮已經殺進電視、相機和各種日常硬體裝置了！以前要魔改家電韌體得靠資深工程師啃文件，現在普通人靠AI對話就能自己寫工具破解限制，以後老老實實看說明書的話，是不是太枯燥了呢？",
+      "screenshot_image": "episode/screenshots/col_3.png"
+    },
+    {
+      "index": 4,
+      "chapter_label": "4 Agent工具開源雙雄",
+      "header_title": "Agent 技能與 CLI 基建爆發",
+      "tag_text": "開源熱榜",
+      "tag_variant": "orange",
+      "card_type": "terminal_dark",
+      "card_title": "讓 AI 代理真正接管所有軟體！",
+      "card_subtitle": "superpowers 日增 788 星 · CLI-Anything 日增 699 星",
+      "terminal_box_text": "obra/superpowers & HKUDS/CLI-Anything 雙雙衝上 GitHub 今日熱榜",
+      "pills": [
+        {
+          "text": "superpowers +788 星",
+          "color": "amber"
+        },
+        {
+          "text": "CLI-Anything +699 星",
+          "color": "blue"
+        }
+      ],
+      "character_image": "character/chibi_excited.png",
+      "character_closed_image": "character/chibi_excited_closed.png",
+      "character_mode": "chibi",
+      "sources": [
+        "https://github.com/obra/superpowers",
+        "https://github.com/HKUDS/CLI-Anything",
+        "https://github.com/google-labs-code/stitch-skills"
+      ],
+      "script": "第4條專欄來看GitHub今日開源熱榜的Agent基建雙雄！其中obra/superpowers一天狂吸788顆星，主打一套真正可落地的代理技能開發框架；另一邊HKUDS團隊推出的CLI-Anything也大漲699顆星，目標是把所有傳統軟體都變成Agent原生可用的命令列工具。只能說給AI裝上這兩個插件，真的是要尾巴翹上天了！",
+      "screenshot_image": "episode/screenshots/col_4.png"
+    },
+    {
+      "index": 5,
+      "chapter_label": "5 把CPU編譯進LLM權重",
+      "header_title": "把 CPU 編譯進 LLM 權重",
+      "tag_text": "硬核論文",
+      "tag_variant": "stamp",
+      "card_type": "evidence_zoom",
+      "card_title": "原文 3x 放大",
+      "card_subtitle": "Hugging Face Daily Papers 今日硬核技術突破",
+      "source_snippet": "arXiv:2611.26450 — A CPU Inside an LLM: Zero-Gradient Compilation of Exact Circuits into Pretrained Weights",
+      "zoom_label": "🔍 論文摘要聚焦",
+      "zoom_content": "語言模型做多位數精確算術常會算錯；這篇研究提出「零梯度電路嫁接」原語，不需要任何訓練樣本或外部直譯器，直接把確定性計算電路編譯進預訓練權重中！",
+      "conclusion": "不靠外掛工具也不重訓 · 直接從權重底層根治算術幻覺",
+      "character_image": "character/chibi_explain.png",
+      "character_closed_image": "character/chibi_explain_closed.png",
+      "character_mode": "chibi",
+      "sources": [
+        "https://huggingface.co/papers/2611.26450",
+        "https://arxiv.org/abs/2611.26450"
+      ],
+      "script": "第5條專欄來看一篇腦洞超大的硬核論文！研究團隊提出Zero-Gradient Circuit-Grafting技術，不需要任何訓練資料、也不用掛外部計算機，就能把精確的確定性計算電路，直接編譯進預訓練好的LLM權重裡面！以前大模型算多位數加減乘除常常自己算到迷路，現在等於直接在腦袋裡內建一顆小CPU，徹底把算術幻覺給治好了。",
+      "screenshot_image": "episode/screenshots/col_5.png"
+    }
+  ],
+  "flash_news": [
+    {
+      "num": 1,
+      "title": "HF 今日最高讚論文：擴散模型 RL 後訓練的本質其實是激活引導（Activation Steering）",
+      "source": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.26627"
+    },
+    {
+      "num": 2,
+      "title": "P vs. NP 新嘗試：研究團隊派出 Agent Swarm 多代理蜂群挑戰千禧年數學難題",
+      "source": "Hacker News",
+      "url": "https://pequalnp.com/"
+    },
+    {
+      "num": 3,
+      "title": "具身智慧安全煞車：新論文研究如何讓 VLA 機器人模型在執行中途安全中止違規動作",
+      "source": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.26239"
+    },
+    {
+      "num": 4,
+      "title": "AI 資料中心成 Big Tech 反撲核心：龐大電力與水資源消耗正引發社會強烈抵制",
+      "source": "TechCrunch AI",
+      "url": "https://techcrunch.com/2026/11/22/why-data-centers-are-at-the-center-of-the-big-tech-backlash/"
+    },
+    {
+      "num": 5,
+      "title": "全美系統連環斷線：FAA、Outlook 與達美航空接連故障，情報總監示警未來恐還有大停擺",
+      "source": "The Verge AI",
+      "url": "https://www.theverge.com/tech/1039851/major-tech-outages"
+    },
+    {
+      "num": 6,
+      "title": "GitHub 工具代理熱榜：last30days-skill 日增 668 星、app-store-compliance 日增 621 星",
+      "source": "GitHub Trending",
+      "url": "https://github.com/mvanhorn/last30days-skill"
+    }
+  ],
+  "flash_script": "接下來快速掃過今天的6條AI快訊！第1條，Hugging Face今日最高20讚論文指出，擴散模型強化學習後訓練的本質其實就是激活引導。第2條，Hacker News熱議pequalnp.com實驗，有人派出Agent蜂群嘗試攻克P vs. NP難題。第3條，新論文探討如何讓視覺語言動作模型VLA在機器人執行中途安全急煞車。第4條，TechCrunch解析AI資料中心龐大能耗如何成為社會抵制科技巨頭的新焦點。第5條，近期FAA、Outlook與達美航空系統連環大斷線，美國情報總監示警未來恐有更多重大停擺。第6條，GitHub熱榜上last30days-skill日增668星、app-store-compliance日增621星，AI代理正全面接管輿情研究與上架合規檢查！",
+  "outro": {
+    "character_image": "character/opening_normal.png",
+    "character_closed_image": "character/opening_normal_closed.png",
+    "character_mode": "normal",
+    "script": "以上就是今天哈Gemi早報的全部內容！如果喜歡這種高效率又帶點梗的AI早報，別忘了按讚訂閱開啟小鈴鐺，我們明天早上同一時間再見，掰掰喵！"
+  }
+}

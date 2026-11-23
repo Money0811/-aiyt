@@ -1,0 +1,109 @@
+{
+  "fps": 30,
+  "characterName": "哈Gemi",
+  "badgeColor": "#6B65E8",
+  "charsPerSecond": 11,
+  "lines": [
+    {
+      "id": "line_01",
+      "statusTag": "訊號連線中...",
+      "expression": "think",
+      "tone": "test",
+      "sfx": "startup",
+      "text": "……喂？喂？測試測試！畫面有出來嗎？",
+      "holdSec": 1.2,
+      "durationFrames": 86
+    },
+    {
+      "id": "line_02",
+      "statusTag": "哈基米在營運",
+      "expression": "happy",
+      "tone": "cheerful",
+      "sfx": "none",
+      "text": "哈囉！歡迎來到「基米哈Gemi 運營中」！",
+      "holdSec": 1.1,
+      "durationFrames": 91
+    },
+    {
+      "id": "line_03",
+      "statusTag": "哈基米在營運",
+      "expression": "normal",
+      "tone": "cheerful",
+      "sfx": "ding",
+      "text": "我是看板娘哈Gemi，叫我哈基米也可以喵～",
+      "holdSec": 1.1,
+      "durationFrames": 91
+    },
+    {
+      "id": "line_04",
+      "statusTag": "AI 情報局",
+      "expression": "excited",
+      "tone": "excited",
+      "sfx": "ding",
+      "text": "這個頻道專門做《哈Gemi早報》——",
+      "holdSec": 1.0,
+      "durationFrames": 80
+    },
+    {
+      "id": "line_05",
+      "statusTag": "AI 情報局",
+      "expression": "explain",
+      "tone": "normal",
+      "sfx": "none",
+      "text": "每天幫你把最新 AI 論文、開源專案跟大新聞，",
+      "holdSec": 0.9,
+      "durationFrames": 90
+    },
+    {
+      "id": "line_06",
+      "statusTag": "4分鐘讀完!",
+      "expression": "happy",
+      "tone": "cheerful",
+      "sfx": "ding",
+      "text": "濃縮成 4 分鐘，配點梗圖跟吐嘈講給你聽！",
+      "holdSec": 1.1,
+      "durationFrames": 91
+    },
+    {
+      "id": "line_07",
+      "statusTag": "純代碼驅動中",
+      "expression": "think",
+      "tone": "mysterious",
+      "sfx": "none",
+      "text": "對了，你現在看到的像素房間跟我的聲音……",
+      "holdSec": 1.0,
+      "durationFrames": 85
+    },
+    {
+      "id": "line_08",
+      "statusTag": "純代碼驅動中",
+      "expression": "excited",
+      "tone": "excited",
+      "sfx": "powerup",
+      "text": "全都是用純代碼一行一行算出來的喔！夠硬核吧？",
+      "holdSec": 1.2,
+      "durationFrames": 96
+    },
+    {
+      "id": "line_09",
+      "statusTag": "元老觀眾募集中",
+      "expression": "chair",
+      "tone": "shy",
+      "sfx": "none",
+      "text": "雖然頻道才剛起步、訂閱數還少少的……",
+      "holdSec": 1.1,
+      "durationFrames": 83
+    },
+    {
+      "id": "line_10",
+      "statusTag": "訂閱 +1 喵?",
+      "expression": "excited",
+      "tone": "cheerful",
+      "sfx": "levelup",
+      "text": "現在按下訂閱就是元老級股東囉！明天早報見～",
+      "holdSec": 2.0,
+      "durationFrames": 118
+    }
+  ],
+  "totalFrames": 911
+}
