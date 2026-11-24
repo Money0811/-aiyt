@@ -15,6 +15,7 @@ import numpy as np
 import soundfile as sf
 import torch
 import torchaudio
+from scipy.signal import butter, sosfiltfilt
 
 # Patch torchaudio.load to fall back to soundfile when FFmpeg shared DLLs are absent
 _orig_torchaudio_load = torchaudio.load
@@ -183,6 +184,13 @@ def synthesize_segment(
     audio_pieces.append(tail_samples)
 
     full_audio = np.concatenate(audio_pieces) if audio_pieces else np.zeros(sample_rate, dtype=np.float32)
+    # Remove low-frequency wind/mic rumble (< 95 Hz)
+    if len(full_audio) > 64:
+        sos = butter(4, 95, btype="highpass", fs=sample_rate, output="sos")
+        full_audio = sosfiltfilt(sos, full_audio).astype(np.float32)
+        peak = float(np.max(np.abs(full_audio)))
+        if peak > 0.95:
+            full_audio = full_audio * (0.95 / peak)
     wav_path = out_dir / f"{seg_id}.wav"
     sf.write(str(wav_path), full_audio, sample_rate)
 
@@ -203,8 +211,8 @@ def synthesize_segment(
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--date", default="2026-11-22")
-    parser.add_argument("--ref-audio", default=str(ROOT_DIR / "assets" / "voice" / "ref_hajimi_mix.wav"))
-    parser.add_argument("--ref-text-file", default=str(ROOT_DIR / "assets" / "voice" / "ref_hajimi_mix.txt"))
+    parser.add_argument("--ref-audio", default=str(ROOT_DIR / "assets" / "voice" / "ref_hajimi_clean.wav"))
+    parser.add_argument("--ref-text-file", default=str(ROOT_DIR / "assets" / "voice" / "ref_hajimi_clean.txt"))
     args = parser.parse_args()
 
     os.chdir(GSV_DIR)

@@ -19,3 +19,9 @@ tmp/
 tools/
 debug.log
 knowledge/human-meme-kb/
+
+# Large raw voice recordings & longform rendered wavs
+assets/voice/*.mp4
+assets/voice/obs_raw.wav
+assets/voice/clean_obs_vocal.wav
+assets/longform/*.wav

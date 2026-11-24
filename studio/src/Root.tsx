@@ -25,6 +25,12 @@ import {
   ShortBriefingProps,
   ShortData,
 } from './compositions/ShortBriefing';
+import {
+  Documentary,
+  DocumentaryProps,
+  LongformData,
+  LongformTimeline,
+} from './compositions/Documentary';
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -152,6 +158,39 @@ export const RemotionRoot: React.FC = () => {
             durationInFrames: Math.max(1, shortData.duration_frames || 900),
             fps: 30,
             props: { shortData },
+          };
+        }}
+      />
+      <Composition
+        id="Documentary"
+        component={Documentary}
+        durationInFrames={900}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          data: null,
+          timeline: null,
+        }}
+        calculateMetadata={async (): Promise<{
+          durationInFrames: number;
+          fps: number;
+          props: DocumentaryProps;
+        }> => {
+          const [dataRes, timelineRes] = await Promise.all([
+            fetch(staticFile('longform/longform.json')),
+            fetch(staticFile('longform/timeline.json')),
+          ]);
+          const data = (await dataRes.json()) as LongformData;
+          const timeline = (await timelineRes.json()) as LongformTimeline;
+          const totalFrames = Object.values(timeline.segments).reduce(
+            (sum, seg) => sum + seg.duration_frames,
+            0
+          );
+          return {
+            durationInFrames: Math.max(1, totalFrames),
+            fps: timeline.fps || 30,
+            props: { data, timeline },
           };
         }}
       />

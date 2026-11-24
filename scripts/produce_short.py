@@ -67,8 +67,8 @@ short_dir = Path(r"{short_dir}")
 data_path = short_dir / "short_data.json"
 data = json.loads(data_path.read_text(encoding="utf-8"))
 
-ref_audio = str(Path(r"{ROOT_DIR}") / "assets" / "voice" / "ref_hajimi_mix.wav")
-prompt_text = (Path(r"{ROOT_DIR}") / "assets" / "voice" / "ref_hajimi_mix.txt").read_text(encoding="utf-8").strip()
+ref_audio = str(Path(r"{ROOT_DIR}") / "assets" / "voice" / "ref_hajimi_clean.wav")
+prompt_text = (Path(r"{ROOT_DIR}") / "assets" / "voice" / "ref_hajimi_clean.txt").read_text(encoding="utf-8").strip()
 
 seg = gsv.synthesize_segment(
     tts_pipeline=tts_pipeline,

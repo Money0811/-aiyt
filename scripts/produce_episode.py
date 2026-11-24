@@ -82,18 +82,22 @@ def main() -> None:
     )
 
     if args.upload:
+        upload_cmd = [
+            str(MAIN_PY),
+            str(ROOT_DIR / "scripts" / "upload_youtube.py"),
+            "--date",
+            args.date,
+            "--video",
+            str(out_mp4),
+            "--privacy",
+            args.privacy,
+        ]
+        srt_path = ep_dir / "subtitles.srt"
+        if srt_path.exists():
+            upload_cmd.extend(["--captions", str(srt_path)])
         run_step(
             "Bonus: 自動上傳至 YouTube (YouTube Data API v3)",
-            [
-                str(MAIN_PY),
-                str(ROOT_DIR / "scripts" / "upload_youtube.py"),
-                "--date",
-                args.date,
-                "--video",
-                str(out_mp4),
-                "--privacy",
-                args.privacy,
-            ],
+            upload_cmd,
         )
 
     print(f"\n✅ 全部完成！成品位於：{ep_dir}")

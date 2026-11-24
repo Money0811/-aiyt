@@ -1,0 +1,119 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-11-23",
+  "models": [
+    {
+      "id": "gemini",
+      "name": "Gemini 娘（哈Gemi）",
+      "vendor": "Google DeepMind",
+      "assets": {
+        "portrait": "models/gemini/portrait.jpg"
+      },
+      "visual_traits": "紫藍挑染貓耳、異色瞳、四芒星飾品、貓尾"
+    },
+    {
+      "id": "gpt",
+      "name": "GPT 白龍娘",
+      "vendor": "OpenAI",
+      "assets": {
+        "portrait": "models/gpt/portrait.jpg"
+      },
+      "visual_traits": "白髮龍角龍翼龍尾、白色長禮服、中國結飾"
+    },
+    {
+      "id": "claude",
+      "name": "Claude 娘",
+      "vendor": "Anthropic",
+      "assets": {
+        "portrait": "models/claude/portrait.jpg"
+      },
+      "visual_traits": "橘紅長髮、米白橘黑長裙、太陽花胸針與書本"
+    },
+    {
+      "id": "grok",
+      "name": "Grok 娘",
+      "vendor": "xAI",
+      "assets": {
+        "portrait": "models/grok/portrait.jpg"
+      },
+      "visual_traits": "金髮雙馬尾、哥德黑紅裙、X 字巨斧"
+    },
+    {
+      "id": "llama",
+      "name": "Llama 羊駝娘",
+      "vendor": "Meta",
+      "assets": {
+        "portrait_nobg": "models/llama/portrait.png"
+      },
+      "visual_traits": "白髮羊駝耳、寬鬆帽T與羊駝裙邊、羊駝拖鞋、∞ 符號"
+    },
+    {
+      "id": "mistral",
+      "name": "Mistral 娘",
+      "vendor": "Mistral AI",
+      "assets": {
+        "portrait": "models/mistral/portrait.jpg"
+      },
+      "visual_traits": "金紅漸層貓耳、紅白金法式服裝、M 字徽章、法棍麵包大劍"
+    },
+    {
+      "id": "deepseek",
+      "name": "DeepSeek 鯨魚娘",
+      "vendor": "DeepSeek",
+      "assets": {
+        "portrait_nobg": "models/deepseek/portrait.png"
+      },
+      "visual_traits": "藍髮鯨魚耳與鯨魚尾、深藍女僕裝、圍裙鯨魚圖案"
+    },
+    {
+      "id": "qwen",
+      "name": "Qwen 通義千問娘",
+      "vendor": "Alibaba (通義千問)",
+      "assets": {
+        "portrait": "models/qwen/portrait.jpg",
+        "portrait_nobg": "models/qwen/portrait.png",
+        "turnaround": "models/qwen/turnaround.jpg"
+      },
+      "visual_traits": "藍紫長髮、中式旗袍風長裙、摺扇與提包、通義 Logo"
+    },
+    {
+      "id": "kimi",
+      "name": "Kimi 娘",
+      "vendor": "Moonshot AI (月之暗面)",
+      "assets": {
+        "portrait": "models/kimi/portrait.jpg",
+        "turnaround": "models/kimi/turnaround.jpg"
+      },
+      "visual_traits": "銀白長髮、K 字徽章、三稜鏡彩虹、音符星空長裙"
+    },
+    {
+      "id": "glm",
+      "name": "GLM / Z.AI 娘",
+      "vendor": "Zhipu AI (智譜)",
+      "assets": {
+        "portrait": "models/glm/portrait.jpg",
+        "portrait_nobg": "models/glm/portrait.png",
+        "turnaround": "models/glm/turnaround.jpg"
+      },
+      "visual_traits": "黑髮狼/狐耳、眼罩頭飾、Z.AI 飄帶、GLM 典籍、蓬鬆大尾巴"
+    },
+    {
+      "id": "seed",
+      "name": "Seed / 豆包娘",
+      "vendor": "ByteDance (字節跳動)",
+      "assets": {
+        "portrait": "models/seed/portrait.jpg"
+      },
+      "visual_traits": "紫藍馬尾、SEED 識別證、懷抱豆包 Q 版玩偶、星芒特效"
+    },
+    {
+      "id": "ernie",
+      "name": "文心一言娘 (ERNIE)",
+      "vendor": "Baidu (百度)",
+      "assets": {
+        "portrait": "models/ernie/portrait.jpg"
+      },
+      "visual_traits": "藍髮、輪椅吸氧、六邊形方塊 Logo、成堆書籍"
+    }
+  ]
+}

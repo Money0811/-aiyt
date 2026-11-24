@@ -53,6 +53,7 @@ def main() -> None:
     parser.add_argument("--date", default="2026-11-22")
     parser.add_argument("--video", default="")
     parser.add_argument("--meta", default="")
+    parser.add_argument("--captions", default="")
     parser.add_argument("--privacy", default="private", choices=["private", "unlisted", "public"])
     args = parser.parse_args()
 
@@ -112,6 +113,28 @@ def main() -> None:
         except HttpError as exc:
             print(
                 f"[WARN] 無法透過 API 設定自訂縮圖（請確認頻道已在 YouTube Studio 完成手機驗證啟用「中級功能」）：{exc}"
+            )
+
+    captions_path = Path(args.captions) if args.captions else (ep_dir / "subtitles.srt")
+    if captions_path.exists():
+        print(f"Uploading CC subtitles: {captions_path.name}...")
+        try:
+            youtube.captions().insert(
+                part="snippet",
+                body={
+                    "snippet": {
+                        "videoId": video_id,
+                        "language": "zh-Hant",
+                        "name": "繁體中文",
+                        "isDraft": False,
+                    }
+                },
+                media_body=MediaFileUpload(str(captions_path), mimetype="application/octet-stream"),
+            ).execute()
+            print("CC subtitles uploaded!")
+        except HttpError as exc:
+            print(
+                f"[WARN] 無法自動上傳 CC 字幕（若 token.json 僅授權 youtube.upload，請於 YouTube Studio 手動匯入 {captions_path}，或改以 youtube.force-ssl 重新授權）：{exc}"
             )
 
 

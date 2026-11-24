@@ -16,22 +16,61 @@ def fmt_mmss(seconds: float) -> str:
     return f"{m:02d}:{s:02d}"
 
 
+def fmt_srt_time(seconds: float) -> str:
+    ms_total = max(0, int(round(seconds * 1000)))
+    h, rem = divmod(ms_total, 3600_000)
+    m, rem = divmod(rem, 60_000)
+    s, ms = divmod(rem, 1000)
+    return f"{h:02d}:{m:02d}:{s:02d},{ms:03d}"
+
+
+def export_srt(ep_dir: Path, timeline: dict) -> Path:
+    fps = float(timeline.get("fps", 30))
+    segs = timeline.get("segments", {})
+    order = ["cover", "agenda"] + [
+        k for k in segs.keys() if k.startswith("col_")
+    ] + ["flash", "outro"]
+
+    srt_blocks: list[str] = []
+    cue_idx = 1
+    offset_frames = 0
+    for seg_key in order:
+        seg = segs.get(seg_key)
+        if not seg:
+            continue
+        for sub in seg.get("subtitles", []):
+            start_sec = (offset_frames + sub["start_frame"]) / fps
+            end_sec = (offset_frames + sub["end_frame"]) / fps
+            if end_sec <= start_sec:
+                end_sec = start_sec + 0.3
+            srt_blocks.append(
+                f"{cue_idx}\n{fmt_srt_time(start_sec)} --> {fmt_srt_time(end_sec)}\n{sub['text']}\n"
+            )
+            cue_idx += 1
+        offset_frames += int(seg.get("duration_frames", 0))
+
+    srt_path = ep_dir / "subtitles.srt"
+    srt_path.write_text("\n".join(srt_blocks), encoding="utf-8")
+    print(f"Exported CC subtitles to {srt_path} ({cue_idx - 1} cues)")
+    return srt_path
+
+
 def export_meta(date_str: str = "2026-11-22") -> Path:
     ep_dir = ROOT_DIR / "output" / date_str
     briefing = json.loads((ep_dir / "briefing.json").read_text(encoding="utf-8"))
     timeline = json.loads((ep_dir / "timeline.json").read_text(encoding="utf-8"))
+    export_srt(ep_dir, timeline)
 
     segs = timeline["segments"]
     col_count = len(briefing["columns"])
     flash_count = len(briefing["flash_news"])
 
-    # Title matching user's preferred format
-    c1_title = briefing["columns"][0]["header_title"]
+    # Title with channel name moved to the end for better mobile CTR
     c2_title = briefing["columns"][1]["header_title"] if col_count > 1 else ""
     c3_title = briefing["columns"][2]["header_title"] if col_count > 2 else ""
     title = (
-        f"【{briefing['channel_name']}】{briefing['cover']['headline']}"
-        f"{c2_title}，{c3_title}！"
+        f"{briefing['cover']['headline']}"
+        f"{c2_title}，{c3_title}｜{briefing['channel_name']}"
     )
 
     # Calculate exact chapter timestamps from timeline.json

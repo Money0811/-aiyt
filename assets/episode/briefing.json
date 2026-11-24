@@ -1,131 +1,134 @@
 {
-  "date": "2026-11-23",
-  "date_display": "11月23日 · 星期一",
-  "date_short": "11.23 週一",
+  "date": "2026-11-24",
+  "date_display": "11月24日 · 星期二",
+  "date_short": "11.24 週二",
   "channel_name": "哈Gemi早報",
   "filtered_stats": {
-    "raw_total": 73,
-    "duplicated_with_history": 10,
-    "excluded_tutorials_or_offtopic": 19,
+    "raw_total": 94,
+    "duplicated_with_history": 11,
+    "excluded_tutorials_or_offtopic": 22,
     "columns_selected": 5,
     "flash_selected": 6
   },
   "cover": {
-    "badge": "⚡ 11月23日 AI 晨間頭條",
-    "tag": "🔥 今日 AI 圈焦點",
-    "headline": "OpenAI 拋新指標談 AI 限速！",
-    "subheadline": "《以撒的結合》用 Suno AI 音樂遭負評轟炸撤換，Vibe Coding 席捲硬體裝置",
+    "badge": "⚡ 11月24日 AI 晨間頭條",
+    "tag": "🔥 今日 AI 圈地震",
+    "headline": "黃仁勳戲劇性回鍋 Nvidia CEO！",
+    "subheadline": "LeCun 砲轟 Dario 藉恐慌封殺開源，Claude Ship 讓 AI 代理自動審核合併代碼",
     "bars": [
       {
         "label": "頭條焦點",
         "color": "red",
-        "status": "OpenAI 困惑度指標 · HN 471 分"
+        "status": "黃仁勳重返 Nvidia · HN 破 1,899 分"
       },
       {
-        "label": "開源與論文",
+        "label": "產業與開源",
         "color": "amber",
-        "status": "CLI-Anything 熱榜 · LLM 內建 CPU"
+        "status": "Claude Ship 上線 · 10G 跑 Qwen3.8-27B"
       }
     ],
-    "banner": "🚀 還有：Agent 蜂群挑戰 P vs. NP · 6 條產業與論文快訊！",
+    "banner": "🚀 還有：DeepMind 代理加速量子演算法 · Amazon 75 億收購案等 6 條快訊！",
     "character_image": "character/opening_normal.png",
     "character_closed_image": "character/opening_normal_closed.png",
     "character_mode": "normal",
-    "script": "早安喵！歡迎收看今天的哈Gemi早報！週一開工不憂鬱，5分鐘帶你速覽5大重磅專欄，還有6條不可錯過的產業與論文快訊！"
+    "script": "早安喵！歡迎收看今天的哈Gemi早報！今天科技圈直接上演年度最大反轉，黃仁勳戲劇性重返Nvidia執行長寶座，還有開源閉源大戰再度開火，馬上帶你速覽5大重磅專欄與6條快訊！"
   },
   "agenda": {
     "progress_badge": "今日目錄",
     "header_title": "5 大專欄 ＋ 6 條快訊",
-    "estimated_duration": "03:45",
+    "estimated_duration": "03:20",
     "character_image": "character/opening_normal.png",
     "character_closed_image": "character/opening_normal_closed.png",
     "character_mode": "normal",
-    "script": "先來看今天精選的5大專欄：第1條，OpenAI推出困惑度與智能新評估指標，首席科學家更談到該如何幫AI設下速限；第2條，《以撒的結合》被抓包偷用Suno AI音樂，遭玩家負評轟炸緊急撤換；第3條，Vibe Coding浪潮正席捲電視與相機等硬體裝置；第4條，GitHub代理技能與CLI-Anything開源榜爆發；第5條，前沿論文竟然直接把CPU編譯進LLM權重！最後還會快速掃過6條快訊，我們馬上開始！"
+    "script": "今天這5條從晶片巨頭政商大戲、開源閉源路線激辯到最新代理編程與量子突破通通幫你整理好了，我們直接進第1條！"
   },
   "columns": [
     {
       "index": 1,
-      "chapter_label": "1 OpenAI新指標與AI限速",
-      "header_title": "OpenAI 困惑度新指標與限速",
-      "tag_text": "HN 471 分熱議",
+      "chapter_label": "1 黃仁勳回鍋Nvidia CEO",
+      "header_title": "黃仁勳戲劇性重返 Nvidia",
+      "tag_text": "HN 1,899 分爆表",
       "tag_variant": "orange",
       "card_type": "evidence_zoom",
       "card_title": "原文 3x 放大",
-      "card_subtitle": "OpenAI 官方文章引爆 Hacker News 471 分與 327 則留言",
-      "source_snippet": "openai.com/index/perplexity-and-intelligence — 探討如何以困惑度（Perplexity）量化模型進展，建立跨團隊的 AI 能力評估標準。",
+      "card_subtitle": "Nvidia 官方公告引爆 Hacker News 1,899 分與 3,002 則留言",
+      "source_snippet": "nvidianews.nvidia.com & cnbc.com — Nvidia 董事會推翻先前辭職決議，正式恢復黃仁勳總裁、CEO 與董事職務。",
       "zoom_label": "🔍 核心看點聚焦",
-      "zoom_content": "OpenAI 首席科學家同步向 TechCrunch 表示，想為 AI 發展設立「安全速限」，前提是全產業必須先對「如何測量速度」達成共識，否則一切監管都只是空談。",
-      "conclusion": "先把規矩立住 · 統一量化指標將成為未來 AI 安全監管的關鍵前提",
+      "zoom_content": "在川普政府公開表態與高層介入後，黃仁勳重返總部獲員工歡呼；但美國國會痛批此舉，並已排定下週傳喚黃仁勳出席參議院公開聽證會。",
+      "conclusion": "董事會緊急大轉彎 · 但國會聽證與 Megaspeed 黑名單風波才剛開始",
       "character_image": "character/chibi_think.png",
       "character_mode": "chibi",
       "sources": [
-        "https://openai.com/index/perplexity-and-intelligence",
-        "https://techcrunch.com/2026/11/22/openais-chief-scientist-has-thoughts-on-how-to-limit-ai-development/"
+        "https://nvidianews.nvidia.com/news/nvidia-board-reinstates-jensen-huang-as-president-ceo-and-board-director",
+        "https://www.cnbc.com/2026/11/23/nvidia-jensen-huang-ceo.html",
+        "https://techcrunch.com/2026/11/23/jensen-huang-scheduled-to-testify-next-week-in-senate-following-reinstatement-as-nvidia-ceo/"
       ],
-      "script": "第1條專欄來看OpenAI的最新動作！OpenAI官方發表《困惑度與智能》長文，在Hacker News衝上471分、湧入327則討論，探討如何用困惑度統一衡量AI模型的能力進展。首席科學家也對TechCrunch直言，想幫AI發展設下安全速限，就得先把規矩立住，大家先對怎麼量測速度達成共識，才不會各說各話！",
+      "script": "第1條專欄來看今天全網最震撼的科技頭條！日前因桃色與國安調查辭職的黃仁勳，竟然在Nvidia董事會大轉彎下戲劇性復職，重新坐回總裁與執行長寶座，Hacker News討論直接衝破3000則留言。雖然白宮與馬斯克公開力挺、公司員工也熱烈歡迎老黃回歸，但美國國會議員卻痛批這簡直是性格失敗，已經排定下週傳喚黃仁勳赴參議院作證，這場晶片帝國的政商風暴還沒結束。",
       "screenshot_image": "episode/screenshots/col_1.png"
     },
     {
       "index": 2,
-      "chapter_label": "2 以撒的結合撤換AI音樂",
-      "header_title": "《以撒》撤換 Suno AI 音樂",
-      "tag_text": "社群炎上事件",
+      "chapter_label": "2 LeCun砲轟Anthropic",
+      "header_title": "LeCun 砲轟 Dario 炒作威脅",
+      "tag_text": "開源閉源激辯",
       "tag_variant": "stamp",
       "card_type": "quote_verdict",
-      "category_pill": "🎮 遊戲圈風波",
-      "stamp_text": "負評轟炸",
-      "card_title": "音軌藏 Suno 元資料被抓包！",
-      "card_subtitle": "《The Binding of Isaac: Repentance Plus》遭 Steam 玩家刷負評",
-      "verdict_text": "玩家拒絕工業代餐 · 開發商緊急下架 AI 生成配樂平息怒火",
+      "category_pill": "⚔️ 路線交鋒",
+      "stamp_text": "HN 959 分熱議",
+      "card_title": "痛批藉安全恐慌封殺開源模型！",
+      "card_subtitle": "Yann LeCun 公開點名 Anthropic 執行長 Dario Amodei",
+      "verdict_text": "誰在守護人類安全，誰又在用監管築起商業護城河？",
       "character_image": "character/chibi_chair.png",
       "character_closed_image": "character/chibi_chair_closed.png",
       "character_mode": "chibi",
       "sources": [
-        "https://www.theverge.com/games/1039770/binding-of-isaac-ai-music"
+        "https://twitter.com/ylecun/status/2124550037912920090",
+        "https://www.technologyreview.com/2026/11/23/1149569/a-legendary-philosopher-isnt-buying-anthropics-consciousness-argument/"
       ],
-      "script": "第2條專欄來看遊戲圈的一場大型翻車現場！經典獨立神作《以撒的結合》最新更新，被Reddit網友抓包某段遊戲配樂檔案裡竟然藏著Suno的元資料，消息一出立刻在Steam遭到玩家大規模負評轟炸。看來玩家對這種一聽就覺得不對勁的AI音樂完全不買單，逼得開發商只能火速把AI音軌全部撤換掉。",
+      "script": "第2條專欄來看AI圈兩大路線的正面開火！圖靈獎得主Yann LeCun在社群直接開砲，痛批Anthropic執行長Dario不斷炒作AI毀滅論，真正目的是想透過立法讓開源模型變成非法，好讓自家公司繼續獨攬控制權。這番言論在Hacker News狂掃959分，恰巧MIT科技評論也刊出知名哲學家質疑Anthropic大談模型意識的報導，看來這場安全派與開源派的口水戰只會越演越烈。",
       "screenshot_image": "episode/screenshots/col_2.png"
     },
     {
       "index": 3,
-      "chapter_label": "3 Vibe Coding席捲硬體",
-      "header_title": "Vibe Coding 攻佔日常硬體",
-      "tag_text": "產業趨勢觀察",
+      "chapter_label": "3 Claude Ship自動審核",
+      "header_title": "Anthropic 推出 Claude Ship",
+      "tag_text": "代理編程新品",
       "tag_variant": "stamp",
       "card_type": "screenshot_bullets",
-      "card_title": "從寫網頁到魔改家電 · 硬體駭客門檻歸零",
-      "card_subtitle": "The Verge 專欄深度剖析 · 2026-11-22",
+      "card_title": "AI 寫完代碼，再由 AI 自己審核合併！",
+      "card_subtitle": "TechCrunch & The Verge 同步報導 · 2026-11-24",
       "bullets": [
-        "Vibe Coding 正從純軟體延伸到電視、相機等消費性裝置",
-        "一般人只需自然語言描述，就能為舊硬體寫出客製化韌體與工具",
-        "硬體品牌過去仰賴的封閉生態與軟體護城河正面臨衝擊"
+        "Claude Ship 可自動審查 Pull Request、修復錯誤並直接核准變更",
+        "針對 AI 產出大量代碼導致人工 Code Review 塞車的痛點設計",
+        "從「寫代碼助手」正式跨入「自動化發版守門員」角色"
       ],
-      "mini_stamp": "全民改機時代",
+      "mini_stamp": "工程師減負還是失業",
       "character_image": "character/chibi_phone.png",
       "character_mode": "chibi",
       "sources": [
-        "https://www.theverge.com/column/1039139/vibe-coding-gadgets-tv-camera"
+        "https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/",
+        "https://www.theverge.com/ai-artificial-intelligence/1040134/anthropic-claude-ship-ai-pull-requests"
       ],
-      "script": "第3條專欄來看一個超有趣的趨勢！過去大家說Vibe Coding大多是用來寫網頁或小App，但The Verge最新專欄指出，這股浪潮已經殺進電視、相機和各種日常硬體裝置了！以前要魔改家電韌體得靠資深工程師啃文件，現在普通人靠AI對話就能自己寫工具破解限制，以後老老實實看說明書的話，是不是太枯燥了呢？",
+      "script": "第3條專欄來看工程師圈的最新神器！Anthropic宣布推出全新開發者產品Claude Ship，直接讓AI代理接手審核Pull Request、自動修Bug甚至直接核准合併。畢竟現在大家用AI寫代碼寫太快，反而讓人工審查變成了最大瓶頸。不過讓AI自己寫代碼又自己按核准，以後真出了生產環境大鍋，到底該算誰的呢？",
       "screenshot_image": "episode/screenshots/col_3.png"
     },
     {
       "index": 4,
-      "chapter_label": "4 Agent工具開源雙雄",
-      "header_title": "Agent 技能與 CLI 基建爆發",
-      "tag_text": "開源熱榜",
+      "chapter_label": "4 10G跑Qwen3.8-27B",
+      "header_title": "10G 跑無損級 Qwen3.8-27B",
+      "tag_text": "本地開源黑科技",
       "tag_variant": "orange",
       "card_type": "terminal_dark",
-      "card_title": "讓 AI 代理真正接管所有軟體！",
-      "card_subtitle": "superpowers 日增 788 星 · CLI-Anything 日增 699 星",
-      "terminal_box_text": "obra/superpowers & HKUDS/CLI-Anything 雙雙衝上 GitHub 今日熱榜",
+      "card_title": "NariQ 量化技術將 27B 模型塞進 10G！",
+      "card_subtitle": "BF16 級別精度表現 · minimind 2 小時從零訓 64M 模型",
+      "terminal_box_text": "huggingface.co/nari-labs/Qwen3.8-27B-NariQ-GGUF",
       "pills": [
         {
-          "text": "superpowers +788 星",
+          "text": "10G 塞進 27B",
           "color": "amber"
         },
         {
-          "text": "CLI-Anything +699 星",
+          "text": "minimind +828 星",
           "color": "blue"
         }
       ],
@@ -133,80 +136,78 @@
       "character_closed_image": "character/chibi_excited_closed.png",
       "character_mode": "chibi",
       "sources": [
-        "https://github.com/obra/superpowers",
-        "https://github.com/HKUDS/CLI-Anything",
-        "https://github.com/google-labs-code/stitch-skills"
+        "https://huggingface.co/nari-labs/Qwen3.8-27B-NariQ-GGUF",
+        "https://github.com/jingyaogong/minimind"
       ],
-      "script": "第4條專欄來看GitHub今日開源熱榜的Agent基建雙雄！其中obra/superpowers一天狂吸788顆星，主打一套真正可落地的代理技能開發框架；另一邊HKUDS團隊推出的CLI-Anything也大漲699顆星，目標是把所有傳統軟體都變成Agent原生可用的命令列工具。只能說給AI裝上這兩個插件，真的是要尾巴翹上天了！",
+      "script": "第4條專欄是本地模型玩家的超大福音！開源團隊發表NariQ技術，把Qwen 3.8 27B模型直接壓縮成只佔10G的單一檔案，還能維持接近BF16的推論精度，普通消費級顯卡就能順跑27B等級大腦！同時間GitHub上的minimind專案也靠著2小時從零訓出64M小模型的教學狂吸828顆星，本地AI的門檻簡直每天都在往下刷新。",
       "screenshot_image": "episode/screenshots/col_4.png"
     },
     {
       "index": 5,
-      "chapter_label": "5 把CPU編譯進LLM權重",
-      "header_title": "把 CPU 編譯進 LLM 權重",
-      "tag_text": "硬核論文",
+      "chapter_label": "5 DeepMind加速量子演算法",
+      "header_title": "DeepMind 代理加速量子演算法",
+      "tag_text": "官方技術突破",
       "tag_variant": "stamp",
       "card_type": "evidence_zoom",
       "card_title": "原文 3x 放大",
-      "card_subtitle": "Hugging Face Daily Papers 今日硬核技術突破",
-      "source_snippet": "arXiv:2611.26450 — A CPU Inside an LLM: Zero-Gradient Compilation of Exact Circuits into Pretrained Weights",
-      "zoom_label": "🔍 論文摘要聚焦",
-      "zoom_content": "語言模型做多位數精確算術常會算錯；這篇研究提出「零梯度電路嫁接」原語，不需要任何訓練樣本或外部直譯器，直接把確定性計算電路編譯進預訓練權重中！",
-      "conclusion": "不靠外掛工具也不重訓 · 直接從權重底層根治算術幻覺",
+      "card_subtitle": "Google DeepMind 官方部落格最新研究進展",
+      "source_snippet": "deepmind.google/blog — Finding faster quantum algorithms with agents and formal verification。",
+      "zoom_label": "🔍 核心看點聚焦",
+      "zoom_content": "結合多個 AI 代理團隊與形式化驗證工具，自動搜尋並嚴格驗證更高效的量子演算法，目標直指核融合模擬與複雜化學反應計算。",
+      "conclusion": "AI 代理＋形式化驗證正成為基礎科學加速的黃金組合",
       "character_image": "character/chibi_explain.png",
       "character_closed_image": "character/chibi_explain_closed.png",
       "character_mode": "chibi",
       "sources": [
-        "https://huggingface.co/papers/2611.26450",
-        "https://arxiv.org/abs/2611.26450"
+        "https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/"
       ],
-      "script": "第5條專欄來看一篇腦洞超大的硬核論文！研究團隊提出Zero-Gradient Circuit-Grafting技術，不需要任何訓練資料、也不用掛外部計算機，就能把精確的確定性計算電路，直接編譯進預訓練好的LLM權重裡面！以前大模型算多位數加減乘除常常自己算到迷路，現在等於直接在腦袋裡內建一顆小CPU，徹底把算術幻覺給治好了。",
+      "script": "第5條專欄來看Google DeepMind的最新科學突破！DeepMind發表研究指出，他們把多個AI代理組隊，再搭配嚴謹的形式化驗證系統，成功找出了運算速度更快的全新量子演算法，未來將直接應用在核融合與高難度化學模擬上。當AI不只會自己寫算法、還能用數學證明自己沒寫錯，基礎科學的研發速度真的要起飛了！",
       "screenshot_image": "episode/screenshots/col_5.png"
     }
   ],
   "flash_news": [
     {
       "num": 1,
-      "title": "HF 今日最高讚論文：擴散模型 RL 後訓練的本質其實是激活引導（Activation Steering）",
-      "source": "HF Daily Papers",
-      "url": "https://huggingface.co/papers/2611.26627"
+      "title": "Amazon 傳砸 75 億美元收購 Decart AI 優化技術，備戰自家 Trainium 晶片銷售",
+      "source": "TechCrunch AI",
+      "url": "https://techcrunch.com/2026/11/23/amazon-snaps-up-decarts-ai-optimization-tech-for-7-5b-as-it-prepares-to-sell-trainium-chips/"
     },
     {
       "num": 2,
-      "title": "P vs. NP 新嘗試：研究團隊派出 Agent Swarm 多代理蜂群挑戰千禧年數學難題",
-      "source": "Hacker News",
-      "url": "https://pequalnp.com/"
+      "title": "Google 搜尋 AI 模式正式串接 Drive 與 Wallet，打造個人化助理體驗",
+      "source": "Google AI Blog",
+      "url": "https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps/"
     },
     {
       "num": 3,
-      "title": "具身智慧安全煞車：新論文研究如何讓 VLA 機器人模型在執行中途安全中止違規動作",
-      "source": "HF Daily Papers",
-      "url": "https://huggingface.co/papers/2611.26239"
+      "title": "OpenAI 聯手 Cisco 推出開源 Linux 執行期防護工具 Shirudo，守護熱修補安全",
+      "source": "OpenAI News",
+      "url": "https://openai.com/index/introducing-shirudo"
     },
     {
       "num": 4,
-      "title": "AI 資料中心成 Big Tech 反撲核心：龐大電力與水資源消耗正引發社會強烈抵制",
-      "source": "TechCrunch AI",
-      "url": "https://techcrunch.com/2026/11/22/why-data-centers-are-at-the-center-of-the-big-tech-backlash/"
+      "title": "奧勒岡與維吉尼亞州檢察長聯合起訴 SpaceX，指控 Grok 放任深偽色情內容",
+      "source": "The Verge AI",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1040255/x-grok-ai-deepfakes-oregon-virginia-lawsuit"
     },
     {
       "num": 5,
-      "title": "全美系統連環斷線：FAA、Outlook 與達美航空接連故障，情報總監示警未來恐還有大停擺",
-      "source": "The Verge AI",
-      "url": "https://www.theverge.com/tech/1039851/major-tech-outages"
+      "title": "Anthropic 開源形式化數學專案 VP 與 VNP 分離探討，HN 獲 138 分討論",
+      "source": "Hacker News",
+      "url": "https://github.com/anthropics/formal-math/tree/main/vp-vnp"
     },
     {
       "num": 6,
-      "title": "GitHub 工具代理熱榜：last30days-skill 日增 668 星、app-store-compliance 日增 621 星",
-      "source": "GitHub Trending",
-      "url": "https://github.com/mvanhorn/last30days-skill"
+      "title": "HF 論文精選：流形超連接 cmHC 獲 88 票、抗穿透世界模型獲 54 票關注",
+      "source": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.27193"
     }
   ],
-  "flash_script": "接下來快速掃過今天的6條AI快訊！第1條，Hugging Face今日最高20讚論文指出，擴散模型強化學習後訓練的本質其實就是激活引導。第2條，Hacker News熱議pequalnp.com實驗，有人派出Agent蜂群嘗試攻克P vs. NP難題。第3條，新論文探討如何讓視覺語言動作模型VLA在機器人執行中途安全急煞車。第4條，TechCrunch解析AI資料中心龐大能耗如何成為社會抵制科技巨頭的新焦點。第5條，近期FAA、Outlook與達美航空系統連環大斷線，美國情報總監示警未來恐有更多重大停擺。第6條，GitHub熱榜上last30days-skill日增668星、app-store-compliance日增621星，AI代理正全面接管輿情研究與上架合規檢查！",
+  "flash_script": "接下來快速掃過今天的6條AI快訊！第1條，Amazon傳出砸下75億美元收購Decart的AI優化技術，替自家Trainium晶片銷售鋪路。第2條，Google搜尋的AI模式正式串接Drive和Wallet，個人化回應再升級。第3條，OpenAI聯手Cisco推出名為Shirudo的開源Linux執行期安全防護工具。第4條，美國奧勒岡與維吉尼亞州正式起訴SpaceX，指控Grok缺乏防範深偽色情的護欄。第5條，Anthropic公開形式化數學研究專案探討計算複雜度難題。第6條，Hugging Face每日論文由cmHC流形超連接與抗穿透世界模型領跑榜單！",
   "outro": {
     "character_image": "character/opening_normal.png",
     "character_closed_image": "character/opening_normal_closed.png",
     "character_mode": "normal",
-    "script": "以上就是今天哈Gemi早報的全部內容！如果喜歡這種高效率又帶點梗的AI早報，別忘了按讚訂閱開啟小鈴鐺，我們明天早上同一時間再見，掰掰喵！"
+    "script": "以上就是今天哈Gemi早報的全部內容！對於黃仁勳重返Nvidia或是Claude Ship自動核准代碼，你怎麼看呢？歡迎留言告訴我，別忘了按讚訂閱，我們明天早上見，掰掰喵！"
   }
 }

@@ -15,7 +15,7 @@ description: End-to-end daily production workflow for 《哈Gemi早報》 AI new
    *(若在沙盒中遇到網路限制，使用 `BypassSandbox: true`)*
 
 ## 階段二：查重、篩選與撰寫 `briefing.json`（不接外部 API，由 Antigravity 直接產出）
-1. **鎖定文風基準**：寫稿前先讀取 `output/2026-11-22/briefing.json` 作為**黃金文風範本**（維持相同 JSON 結構、節奏與單段口播字數約 `100～140` 字）。
+1. **鎖定文風基準**：寫稿前先讀取 `output/2026-11-22/briefing.json` 作為**黃金文風範本**（維持相同 JSON 結構、節奏與單段口播字數約 `100～140` 字）。**其中 `agenda.script`（目錄頁）請用「一句話總結帶過」（約 25～45 字），不逐條複誦 5 大專欄標題，直接進第 1 條。**
 2. **人設與語氣規範**：
    * 主播為元氣貓娘「哈Gemi」，口語自然俐落、像在跟朋友聊今天 AI 圈大事。
    * 僅在開場（`cover`）與片尾（`outro`）句尾自然帶「喵」，正文專欄不刻意堆疊賣萌語氣詞。
