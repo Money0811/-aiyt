@@ -121,3 +121,22 @@ d:\youtube\
 | `s2_train.py` 於 Epoch 4 存檔時報 `FileNotFoundError` (`logs_s2_v2` 不存在) | `s2_train.py` 未自動建立 `logs_s2_v2` 子目錄 | 在 `train_hajimi_cpu.py` 啟動訓練前預先 `mkdir` 建立 `logs_s2_v2` 與 `logs_s1_v2` |
 | `s1_train.py` 啟動報 `ValueError: prefetch_factor option could only be specified in multiprocessing` | `AR/data/data_module.py` 寫死了 `prefetch_factor`，與 `num_workers=0` 衝突 | 搭配上述 `PYTHONPATH` 存根機制，將 `s1_hajimi.yaml` 的 `data.num_workers` 設為 `2` 且 `precision: "32-true"` 順利完成訓練 |
 | `upload_youtube.py` 上傳 Shorts 時標題簡介無法解析 | 原先 `parse_meta()` 僅認 `=== 資訊欄簡介（含時間軸）===` 且寫死讀取 `output/<date>/youtube_meta.txt` | 擴充 `parse_meta()` 同時相容 `=== 資訊欄簡介 ===`，並新增 `--meta` 參數支援指定 Shorts 的 metadata 檔案 |
+
+---
+
+## 五、 2026-11-24 後續迭代紀錄（乾淨語料重訓、長片系統與日更優化）
+
+### 1. 語音「糊聲／底噪」根因定位與 UVR5 乾淨重訓
+* **根因診斷**：聲學頻譜分析顯示舊訓練檔 `source_voice.mp3`（因經過 MP4 錄影＋網頁轉 MP3 多次有損壓縮，且原片帶有 BGM）信噪比僅 `22.2 dB`、`85%` 頻譜滾降點僅 `4,305 Hz`；參考音 `ref_hajimi_mix.wav` 僅 `17.9 dB`，導致微調權重學進悶糊感與低頻底噪（單靠 95Hz 高通濾波無法消除 150Hz–3.5kHz 頻段內混入的 BGM 糊聲）。
+* **解決方案**：改用 OBS 內錄取得 `2026-11-24 00-33-36.mp4`（8 分 26 秒），以 `ffmpeg` 無損抽出 44.1kHz WAV（`obs_raw.wav`，SNR `24.7 dB`）後，透過 `tools/GPT-SoVITS/tools/uvr5` 搭配 `HP5_only_main_vocal.pth` 徹底剝離 BGM，實測靜音底噪降至 `0.00000`（估算 SNR 達 `158.3 dB`）。
+* **重新微調成果**：切出 104 段乾淨片段並以 `faster-whisper` 標註校正後，透過 [train_hajimi_clean.py](file:///d:/youtube/scripts/train_hajimi_clean.py) 完成 CPU 微調（SoVITS 6 epochs → `hajimi_clean_e6_s312.pth`、GPT 12 epochs → `hajimi_clean-e12.ckpt`），並將預設參考音替換為 `ref_hajimi_clean.wav`。
+
+### 2. 深色紀實長片管線與 12 位 AI 模型娘素材庫
+* **模型娘素材庫**：整理 12 位 AI 模型角色（`gemini`、`gpt`、`claude`、`grok`、`llama`、`mistral`、`deepseek`、`qwen`、`kimi`、`glm`、`seed`、`ernie`）至 [assets/models/catalog.json](file:///d:/youtube/assets/models/catalog.json)，並以 `remove_bg.py` 為登場角色批次去背成透明 `.png`。
+* **長片模板與腳本**：建立深色紀實長片模板 [Documentary.tsx](file:///d:/youtube/studio/src/compositions/Documentary.tsx) 與總控 [produce_longform.py](file:///d:/youtube/scripts/produce_longform.py)，完成 10 章節《開源逆襲戰：從絕望差距到掀翻牌桌》（8.4 分鐘）渲染；同時修復了 `sec_02` 誤配不同姿勢立繪導致 1 分鐘處 Q 版瘋狂閃爍的問題（改為成對開合嘴圖檔＋3 幀平滑取樣）。
+
+### 3. 早報節奏、CC 字幕與每日自動化排程
+* **文案與標題優化**：[SKILL.md](file:///d:/youtube/.agent/skills/hagemy-daily-briefing/SKILL.md) 改為目錄頁「一句話總結帶過」（25～45 字）；[export_yt_meta.py](file:///d:/youtube/scripts/export_yt_meta.py) 將「哈Gemi早報」移至標題尾端並自動產出精準時間軸的 `subtitles.srt` CC 字幕。
+* **每日排程實戰（`2026-11-24`）**：設定每日 `07:40` 排程，自動完成今日 94 條新聞抓取、去重寫稿、早報（`NQM5Ie123F8`）與黃仁勳回鍋 Shorts（`ZlIHdLKmqec`）公開發布。
+  * *待優化筆記*：現行 `token.json` 僅含 `youtube.upload` scope，呼叫 `captions.insert` 上傳 `.srt` 時會回傳 `403 insufficientPermissions`（已加防呆提示不中斷主片上傳）；若需全自動上 CC 字幕，後續需以 `youtube.force-ssl` 重新授權 `token.json`。
+

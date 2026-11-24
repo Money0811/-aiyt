@@ -41,6 +41,15 @@ d:\youtube\.venv\Scripts\python.exe d:\youtube\scripts\produce_episode.py --date
 * `--skip-thumbnail`：跳過封面縮圖渲染
 * `--privacy private|unlisted|public`：指定上傳隱私狀態（預設 `private`）
 
+### 5. 產出直式 Shorts（`9:16`）與深度紀實長片
+```powershell
+# 產出直式 Shorts
+d:\youtube\.venv\Scripts\python.exe d:\youtube\scripts\produce_short.py --dir output/shorts/<資料夾名稱>
+
+# 產出深色紀實長片（支援 --only-section 單章重配）
+d:\youtube\.venv\Scripts\python.exe d:\youtube\scripts\produce_longform.py --dir output/longform/<主題資料夾>
+```
+
 ---
 
 ## 📂 專案結構導覽
@@ -53,9 +62,14 @@ d:\youtube\.venv\Scripts\python.exe d:\youtube\scripts\produce_episode.py --date
 | [scripts/fetch_news.py](scripts/fetch_news.py) | 抓取最新新聞至 `output/YYYY-MM-DD/raw_news.json` |
 | [scripts/capture_screenshots.py](scripts/capture_screenshots.py) | 使用 Playwright 擷取專欄真實網頁截圖 |
 | [scripts/generate_gsv_audio.py](scripts/generate_gsv_audio.py) | 呼叫本地 GPT-SoVITS 合成雙語配音與對嘴時間軸（自動將字幕「哈Gemi早報」唸為「哈基米早報」） |
-| [scripts/export_yt_meta.py](scripts/export_yt_meta.py) | 產生 YouTube 推薦標題、章節時間軸、`youtube_meta.txt` 與版權聲明 |
-| [scripts/upload_youtube.py](scripts/upload_youtube.py) | 透過 YouTube Data API v3 上傳影片與自訂縮圖 |
+| [scripts/export_yt_meta.py](scripts/export_yt_meta.py) | 產生 YouTube 推薦標題（頻道名後置）、章節時間軸、`subtitles.srt` CC 字幕與版權聲明 |
+| [scripts/upload_youtube.py](scripts/upload_youtube.py) | 透過 YouTube Data API v3 上傳影片、縮圖與 `.srt` CC 字幕 |
 | [scripts/produce_episode.py](scripts/produce_episode.py) | 串接截圖、配音、Remotion 渲染、資訊欄與上傳的一鍵總控腳本 |
+| [scripts/produce_short.py](scripts/produce_short.py) | 產出 `1080×1920` 直式 YouTube Shorts 的一鍵腳本 |
+| [scripts/produce_longform.py](scripts/produce_longform.py) | 產出深色紀實長片（`Documentary.tsx`）與章節時間軸的總控腳本 |
+| [scripts/train_hajimi_clean.py](scripts/train_hajimi_clean.py) | 使用 UVR5 分離後的純人聲乾軌進行 GPT-SoVITS CPU 微調訓練 |
+| [assets/models/catalog.json](assets/models/catalog.json) | 12 位 AI 模型娘去背立繪與三視圖素材庫索引 |
+| [DEV_LOG.md](DEV_LOG.md) | 完整系統架構演進、自動化設計邏輯與問題排錯紀錄 |
 | [knowledge/human-meme-kb/meme-lab/README.md](knowledge/human-meme-kb/meme-lab/README.md) | 文案靈感與圈內梗詞庫 |
 | [output/history.json](output/history.json) | 歷屆已報導的 URL 與主題紀錄（用於每日去重） |
 | `output/YYYY-MM-DD/` | 每日產出目錄（含 `raw_news.json`、`briefing.json`、`ha_gemi_YYYY-MM-DD.mp4`、`thumbnail.png`、`youtube_meta.txt`） |
@@ -64,7 +78,9 @@ d:\youtube\.venv\Scripts\python.exe d:\youtube\scripts\produce_episode.py --date
 
 ## 📌 目前狀態與接手注意事項
 
-* **最新已完成集數**：`2026-11-22`、`2026-11-23`（均已登錄於 [output/history.json](output/history.json)）。
+* **最新已完成集數**：`2026-11-22`、`2026-11-23`、`2026-11-24`（均已登錄於 [output/history.json](output/history.json)；並已產出黎曼猜想／黃仁勳回鍋 Shorts 與《開源逆襲戰》長片）。
+* **語音模型狀態**：已完成 OBS 無損抽音 ＋ UVR5（`HP5_only_main_vocal`）去 BGM 乾軌（104 段切片）微調，目前使用 `hajimi_clean-e12.ckpt` ＋ `hajimi_clean_e6_s312.pth` 搭配 `ref_hajimi_clean.wav`。
+* **每日自動排程**：已設定每日 `07:40` 觸發早報與精選 Shorts 自動產出並公開發布。
 * **版權聲明已自動化**：[scripts/export_yt_meta.py](scripts/export_yt_meta.py) 已內建「哈Gemi」虛擬角色形象與 CC BY-NC-SA 4.0 版權聲明，未來每集會自動附帶於 `youtube_meta.txt` 與 YouTube 資訊欄中。
 * **沙盒與網路提醒**：執行 `fetch_news.py`、Playwright 截圖與 YouTube 上傳時需要對外網路連線，在 Antigravity 中需以 `BypassSandbox: true` 執行。
 * **避免系統休眠中斷**：GPT-SoVITS（CPU 模式）與 Remotion 渲染約需 10～15 分鐘；建議將 Windows 電源設定的「睡眠」設為「永不」，避免電腦休眠導致背景任務中止。
