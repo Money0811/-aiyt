@@ -1,6 +1,6 @@
 # 《哈Gemi早報》開發與迭代日誌 (DEV_LOG)
 
-> 最後更新：2026-11-23  
+> 最後更新：2026-11-25  
 > 本文件盤點「基米哈Gemi 運營中 / 《哈Gemi早報》」專案的完整檔案結構、系統架構演進、核心自動化規範（`SKILL.md` 與各腳本邏輯）以及開發過程中解決的實戰問題。
 
 ---
@@ -139,4 +139,30 @@ d:\youtube\
 * **文案與標題優化**：[SKILL.md](file:///d:/youtube/.agent/skills/hagemy-daily-briefing/SKILL.md) 改為目錄頁「一句話總結帶過」（25～45 字）；[export_yt_meta.py](file:///d:/youtube/scripts/export_yt_meta.py) 將「哈Gemi早報」移至標題尾端並自動產出精準時間軸的 `subtitles.srt` CC 字幕。
 * **每日排程實戰（`2026-11-24`）**：設定每日 `07:40` 排程，自動完成今日 94 條新聞抓取、去重寫稿、早報（`NQM5Ie123F8`）與黃仁勳回鍋 Shorts（`ZlIHdLKmqec`）公開發布。
   * *待優化筆記*：現行 `token.json` 僅含 `youtube.upload` scope，呼叫 `captions.insert` 上傳 `.srt` 時會回傳 `403 insufficientPermissions`（已加防呆提示不中斷主片上傳）；若需全自動上 CC 字幕，後續需以 `youtube.force-ssl` 重新授權 `token.json`。
+
+---
+
+## 六、 2026-11-25 哈基米 RVC 模型建置與《又三郎》日語翻唱混音實戰
+
+### 1. RVC 隔離環境建置與算力路線決策
+* **環境隔離**：將 **Applio (RVC V3.7.2)** 複製至 `tools/RVC/`（已由 `.gitignore` 忽略），建立獨立虛擬環境 `tools/RVC/.venv`（`torch==2.9.1+cpu`）並新增一鍵啟動檔 `tools/RVC/run-rvc-cpu.bat`，避免與 `GPT-SoVITS` 依賴衝突。
+* **AMD 內顯實測與雲端訓練分工**：
+  * 實測本機顯示卡為 `AMD Radeon(TM) 840M Graphics`，驗證 `tools/GPT-SoVITS/.venv-rocm` 的 `torch 2.9.1+rocm7.2.1` 回傳 `is_available: False`，確認 Windows 版 ROCm 7.2.1 不支援此內顯（隨即中止下載 CUDA/ROCm 大檔節省 20 Mbps 頻寬）。
+  * 因 RVC / Applio 基於 PyTorch CUDA，**不支援 TPU（XLA）**，改採 **Google Colab 免費 T4 GPU 訓練 ＋ 本地輕量 CPU 保留推論** 之架構。
+
+### 2. 雲端訓練成果與模型歸位
+* 直接沿用先前 UVR5 清洗好的 104 段哈基米語料（`tools/GPT-SoVITS/output/hajimi_obs_slicer`，32kHz、共 `452.7 秒` / 約 7.5 分鐘，打包為 `22.96 MB`）。
+* 於 Colab T4 GPU 以 `40k / v2`、`rmvpe`、`Batch Size = 8`、`Total Epochs = 250` 完成訓練（約 20 秒/epoch）並生成特徵索引。
+* 產出權重 `hajimi_200e_5600s.pth`、`hajimi_250e_7000s.pth` 與 `hajimi.index` 已下載並歸位至 `tools/RVC/logs/hajimi/`。
+
+### 3. 《又三郎》日語翻唱問題排查與混音調校紀錄
+
+| 問題現象 / 使用者回饋 | 排查與數據分析結果 | 最終解決方案 |
+|:---|:---|:---|
+| YouTube 網頁下載器音質糊（僅 128 kbps）＋ 確認《又三郎》版權 | 確認《又三郎》詞曲屬 JASRAC（YouTube 有包括契約），但嚴禁使用原曲錄音／MV（原盤權）；第三方網頁下載會二次壓損音質 | 改用 `uvx yt-dlp` 直抓最高音質串流無損轉 `.wav`，並搭配可二創翻唱人聲導唱與獨立 `Off Vocal` 伴奏 |
+| `UVR-MDX-NET-Inst_HQ_3.onnx` 拆人聲仍殘留伴奏 | `Inst_HQ_3` 偏重提取伴奏，對某些編曲的人聲殘留較多 | 改用人聲專用模型 **`UVR-MDX-NET-Voc_FT.onnx`** 分離出乾淨純人聲乾聲 |
+| 第一版導唱副歌與 1:16–1:19 嚴重破音、電音劈裂 | 使用者聽測定位為「主唱於尾音與副歌疊了同一人的密集和聲補高音」；RVC 單音高線遇雙聲部疊音必劈裂，且說話語料超出超高音域產生聲碼器電子音 | 更換為純單人聲導唱（`dj2Tt9-yvIg`），並將 `Pitch` 降 **`-2`** 避開臨界破音 |
+| 日語咬字「含滷蛋／大舌頭」，且換 `fcpe` 後反而更破 | `Index Rate` 偏高（`0.3+`）帶入中文舌位特徵；確認 Applio V3.7.2 已移除 UI 的 `Filter Radius`，且 `fcpe` 在氣音尾段不如 `rmvpe` 穩定 | 鎖定 **`rmvpe`** ＋ **`Index Rate = 0.13`** ＋ **`Protect = 0.5`** ＋ **`Volume Envelope = 0.25`** |
+| 初版混音「太空靈」→ 去混響版「KTV 乾唱感重」→ 第三版「伴奏蓋過人聲」 | 相關性實測前後 60 秒延遲皆為 `-0.96s`（無跑拍）；實測人聲發聲段 RMS `-14.09 dB`、伴奏 `-13.3 dB`，且人聲 **`>10kHz` 高頻能量僅 `0.024%`**。<br>• `v2` 疊加 45/75ms 長 echo 變空靈<br>• `v2_dry` 零空間＋人聲凸出 ~5 dB 變 KTV<br>• `v3` 人聲砍至 `0.88`（`makeup=1`）＋伴奏拉至 `0.90` 導致被電吉他牆淹沒 | 定案版（`v4_balanced`）：伴奏以 `ffmpeg rubberband` 降 `-2` 半音對齊調性、設 `volume=0.80` 並於 `2.8kHz` 微挖 `-1.5 dB` 讓位；人聲延遲 `960ms` 對齊、設 `volume=1.05`、補 `6.5kHz` 空氣感與極短 `12/22ms` 早期反射，最後經總線膠合壓縮與 Limiter 輸出 |
+
 
