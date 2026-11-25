@@ -65,13 +65,20 @@ def export_meta(date_str: str = "2026-11-22") -> Path:
     col_count = len(briefing["columns"])
     flash_count = len(briefing["flash_news"])
 
-    # Title with channel name moved to the end for better mobile CTR
-    c2_title = briefing["columns"][1]["header_title"] if col_count > 1 else ""
-    c3_title = briefing["columns"][2]["header_title"] if col_count > 2 else ""
-    title = (
-        f"{briefing['cover']['headline']}"
-        f"{c2_title}，{c3_title}｜{briefing['channel_name']}"
-    )
+    # Title with strong hook first and channel name at the end for better mobile CTR
+    headline = briefing["cover"]["headline"].strip()
+    extra_topics = [
+        col["header_title"].strip()
+        for col in briefing["columns"][1:3]
+        if col.get("header_title", "").strip()
+    ]
+    if extra_topics:
+        if headline and headline[-1] not in "！？。：，,.!?":
+            headline += "！"
+        hook_part = f"{headline}{'，'.join(extra_topics)}"
+    else:
+        hook_part = headline
+    title = f"{hook_part}｜{briefing['channel_name']}"[:100]
 
     # Calculate exact chapter timestamps from timeline.json
     cursor = 0.0

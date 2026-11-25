@@ -12,10 +12,10 @@
       "subheadline": "曾經被認為相差好幾個世代的鴻溝，是如何一步步被填平的",
       "badge": "🎬 深度紀實長片",
       "featured_models": [
-        "models/gpt/portrait.png",
-        "models/claude/portrait.png",
-        "models/llama/portrait.png",
-        "models/deepseek/portrait.png"
+        "models/gpt/chibi_front.png",
+        "models/claude/chibi_front.png",
+        "models/llama/chibi_front.png",
+        "models/deepseek/chibi_front.png"
       ],
       "highlights": [
         "起點：百億美金與萬卡集群築起的閉源高牆",
@@ -33,7 +33,7 @@
       "headline": "2022–2023 初：宛如兩個世代的鴻溝",
       "subheadline": "當 GPT-4 寫出流暢代碼時，開源小模型還在胡言亂語",
       "badge": "🌑 初期絕望差距",
-      "guest_model": "models/gpt/portrait.png",
+      "guest_model": "models/gpt/chibi_front.png",
       "guest_name": "OpenAI · GPT 系列",
       "left_title": "當時的開源困境",
       "left_points": [
@@ -58,7 +58,7 @@
       "headline": "Meta Llama：意外點燃的開源野火",
       "subheadline": "權重流出後短短一週，社群證明了消費級硬體也能跑大模型",
       "badge": "🦙 開源第一槍",
-      "guest_model": "models/llama/portrait.png",
+      "guest_model": "models/llama/chibi_front.png",
       "guest_name": "Meta · Llama 系列",
       "steps": [
         {
@@ -88,7 +88,7 @@
       "headline": "Mistral 與那份震驚業界的備忘錄",
       "subheadline": "當小參數模型開始越級打怪，大廠第一次感到了寒意",
       "badge": "⚔️ 架構突圍",
-      "guest_model": "models/mistral/portrait.png",
+      "guest_model": "models/mistral/chibi_front.png",
       "guest_name": "Mistral AI · Mistral / Mixtral",
       "bullets": [
         "Google 內部流出《We Have No Moat》備忘錄（2023.05）：承認開源迭代速度正超越巨頭",
@@ -108,7 +108,7 @@
       "headline": "差點被甩開的瓶頸期：為什麼總差最後一口氣？",
       "subheadline": "當閉源進入長上下文、原生多模態與工程寫碼統治，開源一度陷入迷茫",
       "badge": "🧱 二次高牆",
-      "guest_model": "models/claude/portrait.png",
+      "guest_model": "models/claude/chibi_front.png",
       "guest_name": "Anthropic · Claude 系列",
       "left_title": "閉源陣營的二次進化",
       "left_points": [
@@ -133,7 +133,7 @@
       "headline": "Qwen 通義千問：把開源底座徹底打穿",
       "subheadline": "全尺寸、全模態、強編程，讓「本地部署真神」不再只是口號",
       "badge": "🪭 底座革命",
-      "guest_model": "models/qwen/portrait.png",
+      "guest_model": "models/qwen/chibi_front.png",
       "guest_name": "Alibaba · Qwen 通義千問",
       "bullets": [
         "從 0.5B 到 72B+ 全尺寸無死角覆蓋，精準塞滿每一張消費級顯卡",
@@ -153,7 +153,7 @@
       "headline": "智譜 GLM：歷經陣痛期的不屈長跑者",
       "subheadline": "開源競賽不是百米衝刺，撐過低谷才看得到下一輪爆發",
       "badge": "📚 韌性與進化",
-      "guest_model": "models/glm/portrait.png",
+      "guest_model": "models/glm/chibi_front.png",
       "guest_name": "Zhipu AI (Z.ai) · GLM 系列",
       "bullets": [
         "2023 年 3 月以 ChatGLM-6B 成為無數中文開發者本地部署的「第一堂課」",
@@ -173,7 +173,7 @@
       "headline": "DeepSeek V3 / R1：把護城河炸出大洞的奇襲",
       "subheadline": "當開源模型用極致性價比與公開推理鏈正面硬剛頂級閉源，遊戲規則改寫了",
       "badge": "🐋 掀桌時刻",
-      "guest_model": "models/deepseek/portrait.png",
+      "guest_model": "models/deepseek/chibi_front.png",
       "guest_name": "DeepSeek · V3 / R1 系列",
       "left_title": "過去的閉源定價邏輯",
       "left_points": [
@@ -198,7 +198,7 @@
       "headline": "從「仰望」到「平視」：今天的 AI 版圖",
       "subheadline": "閉源探索上限，開源守住下限與每個人的本地算力主權",
       "badge": "⚖️ 雙軌平衡",
-      "guest_model": "models/gemini/portrait.png",
+      "guest_model": "models/gemini/chibi_front.png",
       "guest_name": "Google DeepMind · Gemini 系列",
       "steps": [
         {

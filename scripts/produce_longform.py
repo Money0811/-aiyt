@@ -23,6 +23,41 @@ def fmt_mmss(seconds: float) -> str:
     return f"{m:02d}:{s:02d}"
 
 
+def fmt_srt_time(seconds: float) -> str:
+    ms_total = max(0, int(round(seconds * 1000)))
+    h, rem = divmod(ms_total, 3600_000)
+    m, rem = divmod(rem, 60_000)
+    s, ms = divmod(rem, 1000)
+    return f"{h:02d}:{m:02d}:{s:02d},{ms:03d}"
+
+
+def export_srt(ep_dir: Path, data: dict, timeline: dict) -> Path:
+    fps = float(timeline.get("fps", 30))
+    segs = timeline.get("segments", {})
+    srt_blocks: list[str] = []
+    cue_idx = 1
+    offset_frames = 0
+    for sec in data["sections"]:
+        seg = segs.get(sec["id"])
+        if not seg:
+            continue
+        for sub in seg.get("subtitles", []):
+            start_sec = (offset_frames + sub["start_frame"]) / fps
+            end_sec = (offset_frames + sub["end_frame"]) / fps
+            if end_sec <= start_sec:
+                end_sec = start_sec + 0.3
+            srt_blocks.append(
+                f"{cue_idx}\n{fmt_srt_time(start_sec)} --> {fmt_srt_time(end_sec)}\n{sub['text']}\n"
+            )
+            cue_idx += 1
+        offset_frames += int(seg.get("duration_frames", 0))
+
+    srt_path = ep_dir / "subtitles.srt"
+    srt_path.write_text("\n".join(srt_blocks), encoding="utf-8")
+    print(f"Exported CC subtitles -> {srt_path} ({cue_idx - 1} cues)")
+    return srt_path
+
+
 def synthesize_longform_audio(ep_dir: Path, only_section: str = "") -> None:
     audio_dir = ep_dir / "audio"
     audio_dir.mkdir(parents=True, exist_ok=True)
@@ -44,19 +79,28 @@ tts_pipeline = TTS(tts_config)
 ep_dir = Path(r"{ep_dir}")
 audio_dir = ep_dir / "audio"
 data = json.loads((ep_dir / "longform.json").read_text(encoding="utf-8"))
+voices_cfg = json.loads((Path(r"{ROOT_DIR}") / "assets" / "voice" / "voices.json").read_text(encoding="utf-8"))["voices"]
 timeline_path = ep_dir / "timeline.json"
-existing = json.loads(timeline_path.read_text(encoding="utf-8")) if timeline_path.exists() else {{"fps": 30, "voice": "GPT-SoVITS-Hajimi-Finetuned", "segments": {{}}}}
+existing = json.loads(timeline_path.read_text(encoding="utf-8")) if timeline_path.exists() else {{"fps": 30, "voice": "GPT-SoVITS-MultiVoice", "segments": {{}}}}
 
-ref_audio = str(Path(r"{ROOT_DIR}") / "assets" / "voice" / "ref_hajimi_clean.wav")
-prompt_text = (Path(r"{ROOT_DIR}") / "assets" / "voice" / "ref_hajimi_clean.txt").read_text(encoding="utf-8").strip()
 only_sec = {only_section!r}
+current_voice = "gemini"
 
 segments = existing.get("segments", {{}})
 for sec in data["sections"]:
     sid = sec["id"]
     if only_sec and sid != only_sec:
         continue
-    print(f"Synthesizing {{sid}} via GPT-SoVITS...")
+    voice_id = sec.get("voice", "gemini")
+    v_info = voices_cfg.get(voice_id, voices_cfg["gemini"])
+    if voice_id != current_voice:
+        print(f"Switching GPT-SoVITS voice -> {{voice_id}} ({{v_info['label']}})")
+        tts_pipeline.init_t2s_weights(str(Path(r"{ROOT_DIR}") / v_info["gpt_weights"]))
+        tts_pipeline.init_vits_weights(str(Path(r"{ROOT_DIR}") / v_info["sovits_weights"]))
+        current_voice = voice_id
+    ref_audio = str(Path(r"{ROOT_DIR}") / v_info["ref_audio"])
+    prompt_text = (Path(r"{ROOT_DIR}") / v_info["ref_text"]).read_text(encoding="utf-8").strip()
+    print(f"Synthesizing {{sid}} ({{voice_id}}) via GPT-SoVITS...")
     seg = gsv.synthesize_segment(
         tts_pipeline=tts_pipeline,
         seg_id=sid,
@@ -66,6 +110,7 @@ for sec in data["sections"]:
         prompt_text=prompt_text,
     )
     seg["audio_file"] = f"longform/{{sid}}.wav"
+    seg["voice"] = voice_id
     segments[sid] = seg
 
 timeline = {{"fps": 30, "voice": "GPT-SoVITS-Hajimi-Finetuned", "segments": segments}}
@@ -79,6 +124,7 @@ print(f"Done! Total longform duration: {{total_sec:.1f}}s ({{total_sec/60:.1f}} 
 def export_meta(ep_dir: Path) -> None:
     data = json.loads((ep_dir / "longform.json").read_text(encoding="utf-8"))
     timeline = json.loads((ep_dir / "timeline.json").read_text(encoding="utf-8"))
+    export_srt(ep_dir, data, timeline)
 
     cursor = 0.0
     chapters: list[str] = []
@@ -102,8 +148,8 @@ def export_meta(ep_dir: Path) -> None:
 
 ---
 【虛擬角色形象與版權聲明】
-本片虛擬角色「哈Gemi」形象衍生自 B 站畫師 @ZipZipPipe 創作之「Gemini 娘」擬人設定。
-本頻道基於原作設定進行二次創作與 AI 動作表情繪製，依原作者聲明採用「創用 CC 姓名標示－非商業性－相同方式分享 4.0 國際授權條款 (CC BY-NC-SA 4.0)」釋出：
+本片登場之虛擬角色「哈Gemi」及各 AI 模型擬人形象（含 Gemini、GPT、Claude、Llama、Mistral、Qwen、GLM、DeepSeek 等角色設定），皆衍生自 B 站畫師 @ZipZipPipe 創作之 AI 模型娘擬人設定。
+本頻道基於原作設定進行二次創作與像素化／動態繪製，依原作者聲明採用「創用 CC 姓名標示－非商業性－相同方式分享 4.0 國際授權條款 (CC BY-NC-SA 4.0)」釋出：
 https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hant
 （本頻道僅作非商業性科技資訊分享，未開啟任何商業營利。）
 """
@@ -116,6 +162,7 @@ def main() -> None:
     parser.add_argument("--only-section", default="", help="Re-synthesize only one section id")
     parser.add_argument("--skip-audio", action="store_true")
     parser.add_argument("--skip-video", action="store_true")
+    parser.add_argument("--concurrency", type=int, default=5, help="Remotion render concurrency")
     args = parser.parse_args()
 
     ep_dir = Path(args.dir)
@@ -137,7 +184,7 @@ def main() -> None:
         data = json.loads((ep_dir / "longform.json").read_text(encoding="utf-8"))
         out_mp4 = ep_dir / f"{data['id']}.mp4"
         subprocess.run(
-            [str(REMOTION_CMD), "render", "src/index.ts", "Documentary", str(out_mp4), "--concurrency=2"],
+            [str(REMOTION_CMD), "render", "src/index.ts", "Documentary", str(out_mp4), f"--concurrency={args.concurrency}"],
             cwd=str(ROOT_DIR / "studio"),
             check=True,
         )

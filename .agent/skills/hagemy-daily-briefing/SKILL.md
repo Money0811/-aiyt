@@ -16,6 +16,9 @@ description: End-to-end daily production workflow for 《哈Gemi早報》 AI new
 
 ## 階段二：查重、篩選與撰寫 `briefing.json`（不接外部 API，由 Antigravity 直接產出）
 1. **鎖定文風基準**：寫稿前先讀取 `output/2026-11-22/briefing.json` 作為**黃金文風範本**（維持相同 JSON 結構、節奏與單段口播字數約 `100～140` 字）。**其中 `agenda.script`（目錄頁）請用「一句話總結帶過」（約 25～45 字），不逐條複誦 5 大專欄標題，直接進第 1 條。**
+2. **前 5 秒留存與標題鉤子規範（CTR ＆ Retention 優化）**：
+   * **`cover.headline`（YouTube 標題前段）**：必須是當日最強單一爆點（含具體人物／大廠／數字或反轉衝突），控制在 `15～22` 字以內，**禁止把「哈Gemi早報」放最前面**（由 `export_yt_meta.py` 自動將 `｜哈Gemi早報` 放在標題最後）。
+   * **`cover.script`（前 5 秒開頭）**：**第一句必須直接拋出頭條爆點或反問**，再接簡短問候「早安喵，我是哈Gemi」，避免先講冗長開場白導致觀眾前 4 秒滑走（例：`「黃仁勳竟然殺回 Nvidia 當執行長了？！早安喵，今天還有開源閉源大戰再度開火，3 分鐘帶你速覽 5 大專欄與 6 條快訊！」`）。
 2. **人設與語氣規範**：
    * 主播為元氣貓娘「哈Gemi」，口語自然俐落、像在跟朋友聊今天 AI 圈大事。
    * 僅在開場（`cover`）與片尾（`outro`）句尾自然帶「喵」，正文專欄不刻意堆疊賣萌語氣詞。
@@ -39,4 +42,10 @@ d:\youtube\.venv\Scripts\python.exe d:\youtube\scripts\produce_episode.py --date
 若使用者要同步上傳 YouTube（預設 `private` 草稿）：
 ```powershell
 d:\youtube\.venv\Scripts\python.exe d:\youtube\scripts\produce_episode.py --date YYYY-MM-DD --upload
+```
+
+## 階段四（選用）：追蹤頻道數據表現
+抓取過去 28 天頻道與影片數據（存至 `output/analytics_latest.json`）：
+```powershell
+d:\youtube\.venv\Scripts\python.exe d:\youtube\scripts\fetch_analytics.py
 ```

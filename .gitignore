@@ -14,6 +14,7 @@ dist/
 .env
 client_secrets.json
 token.json
+token_analytics.json
 output/
 tmp/
 tools/
@@ -24,4 +25,6 @@ knowledge/human-meme-kb/
 assets/voice/*.mp4
 assets/voice/obs_raw.wav
 assets/voice/clean_obs_vocal.wav
+assets/voice/claude_raw.wav
+assets/voice/clean_claude_vocal.wav
 assets/longform/*.wav

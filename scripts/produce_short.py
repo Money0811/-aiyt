@@ -120,6 +120,7 @@ def main() -> None:
     parser.add_argument("--skip-screenshot", action="store_true")
     parser.add_argument("--skip-audio", action="store_true")
     parser.add_argument("--skip-video", action="store_true")
+    parser.add_argument("--concurrency", type=int, default=5, help="Remotion render concurrency")
     args = parser.parse_args()
 
     short_dir = Path(args.dir)
@@ -154,7 +155,7 @@ def main() -> None:
         out_mp4 = short_dir / f"{data['id']}.mp4"
         run_step(
             "3/3 渲染 1080x1920 直式 Shorts (Remotion)",
-            [str(REMOTION_CMD), "render", "src/index.ts", "ShortBriefing", str(out_mp4), "--concurrency=2"],
+            [str(REMOTION_CMD), "render", "src/index.ts", "ShortBriefing", str(out_mp4), f"--concurrency={args.concurrency}"],
             cwd=ROOT_DIR / "studio",
         )
 

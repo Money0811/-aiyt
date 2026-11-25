@@ -31,6 +31,8 @@ import {
   LongformData,
   LongformTimeline,
 } from './compositions/Documentary';
+import { CodeDocMvp } from './compositions/CodeDocMvp';
+import { DocumentaryThumbnail } from './compositions/DocumentaryThumbnail';
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -193,6 +195,22 @@ export const RemotionRoot: React.FC = () => {
             props: { data, timeline },
           };
         }}
+      />
+      <Composition
+        id="CodeDocMvp"
+        component={CodeDocMvp}
+        durationInFrames={150}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="DocumentaryThumbnail"
+        component={DocumentaryThumbnail}
+        durationInFrames={1}
+        fps={30}
+        width={1280}
+        height={720}
       />
     </>
   );

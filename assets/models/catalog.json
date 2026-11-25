@@ -7,7 +7,17 @@
       "name": "Gemini 娘（哈Gemi）",
       "vendor": "Google DeepMind",
       "assets": {
-        "portrait": "models/gemini/portrait.jpg"
+        "portrait": "models/gemini/portrait.jpg",
+        "chibi_turnaround": "models/gemini/chibi_turnaround.jpg",
+        "portrait_nobg": "models/gemini/portrait.png"
+      },
+      "voice": {
+        "label": "Gemini 娘（哈Gemi）的聲音",
+        "exp_name": "hajimi_clean",
+        "ref_audio": "voice/ref_hajimi_clean.wav",
+        "ref_text": "voice/ref_hajimi_clean.txt",
+        "gpt_weights": "tools/GPT-SoVITS/GPT_weights_v2/hajimi_clean-e12.ckpt",
+        "sovits_weights": "tools/GPT-SoVITS/SoVITS_weights_v2/hajimi_clean_e6_s312.pth"
       },
       "visual_traits": "紫藍挑染貓耳、異色瞳、四芒星飾品、貓尾"
     },
@@ -16,7 +26,9 @@
       "name": "GPT 白龍娘",
       "vendor": "OpenAI",
       "assets": {
-        "portrait": "models/gpt/portrait.jpg"
+        "portrait": "models/gpt/portrait.jpg",
+        "chibi_turnaround": "models/gpt/chibi_turnaround.jpg",
+        "portrait_nobg": "models/gpt/portrait.png"
       },
       "visual_traits": "白髮龍角龍翼龍尾、白色長禮服、中國結飾"
     },
@@ -25,7 +37,17 @@
       "name": "Claude 娘",
       "vendor": "Anthropic",
       "assets": {
-        "portrait": "models/claude/portrait.jpg"
+        "portrait": "models/claude/portrait.jpg",
+        "chibi_turnaround": "models/claude/chibi_turnaround.jpg",
+        "portrait_nobg": "models/claude/portrait.png"
+      },
+      "voice": {
+        "label": "Claude 娘的聲音",
+        "exp_name": "claude_clean",
+        "ref_audio": "voice/ref_claude.wav",
+        "ref_text": "voice/ref_claude.txt",
+        "gpt_weights": "tools/GPT-SoVITS/GPT_weights_v2/claude_clean-e12.ckpt",
+        "sovits_weights": "tools/GPT-SoVITS/SoVITS_weights_v2/claude_clean_e6_s306.pth"
       },
       "visual_traits": "橘紅長髮、米白橘黑長裙、太陽花胸針與書本"
     },
@@ -43,7 +65,8 @@
       "name": "Llama 羊駝娘",
       "vendor": "Meta",
       "assets": {
-        "portrait_nobg": "models/llama/portrait.png"
+        "portrait_nobg": "models/llama/portrait.png",
+        "chibi_turnaround": "models/llama/chibi_turnaround.jpg"
       },
       "visual_traits": "白髮羊駝耳、寬鬆帽T與羊駝裙邊、羊駝拖鞋、∞ 符號"
     },
@@ -52,7 +75,9 @@
       "name": "Mistral 娘",
       "vendor": "Mistral AI",
       "assets": {
-        "portrait": "models/mistral/portrait.jpg"
+        "portrait": "models/mistral/portrait.jpg",
+        "chibi_turnaround": "models/mistral/chibi_turnaround.jpg",
+        "portrait_nobg": "models/mistral/portrait.png"
       },
       "visual_traits": "金紅漸層貓耳、紅白金法式服裝、M 字徽章、法棍麵包大劍"
     },
@@ -61,7 +86,8 @@
       "name": "DeepSeek 鯨魚娘",
       "vendor": "DeepSeek",
       "assets": {
-        "portrait_nobg": "models/deepseek/portrait.png"
+        "portrait_nobg": "models/deepseek/portrait.png",
+        "chibi_turnaround": "models/deepseek/chibi_turnaround.jpg"
       },
       "visual_traits": "藍髮鯨魚耳與鯨魚尾、深藍女僕裝、圍裙鯨魚圖案"
     },
@@ -72,7 +98,8 @@
       "assets": {
         "portrait": "models/qwen/portrait.jpg",
         "portrait_nobg": "models/qwen/portrait.png",
-        "turnaround": "models/qwen/turnaround.jpg"
+        "turnaround": "models/qwen/turnaround.jpg",
+        "chibi_turnaround": "models/qwen/chibi_turnaround.jpg"
       },
       "visual_traits": "藍紫長髮、中式旗袍風長裙、摺扇與提包、通義 Logo"
     },
@@ -93,7 +120,8 @@
       "assets": {
         "portrait": "models/glm/portrait.jpg",
         "portrait_nobg": "models/glm/portrait.png",
-        "turnaround": "models/glm/turnaround.jpg"
+        "turnaround": "models/glm/turnaround.jpg",
+        "chibi_turnaround": "models/glm/chibi_turnaround.jpg"
       },
       "visual_traits": "黑髮狼/狐耳、眼罩頭飾、Z.AI 飄帶、GLM 典籍、蓬鬆大尾巴"
     },

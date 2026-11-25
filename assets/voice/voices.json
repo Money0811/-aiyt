@@ -1,0 +1,29 @@
+{
+  "version": "1.0",
+  "voices": {
+    "gemini": {
+      "character_id": "gemini",
+      "label": "Gemini 娘（哈Gemi）的聲音",
+      "exp_name": "hajimi_clean",
+      "source_video": "assets/voice/2026-11-24 00-33-36.mp4",
+      "clean_vocal": "assets/voice/clean_obs_vocal.wav",
+      "ref_audio": "assets/voice/ref_hajimi_clean.wav",
+      "ref_text": "assets/voice/ref_hajimi_clean.txt",
+      "gpt_weights": "tools/GPT-SoVITS/GPT_weights_v2/hajimi_clean-e12.ckpt",
+      "sovits_weights": "tools/GPT-SoVITS/SoVITS_weights_v2/hajimi_clean_e6_s312.pth",
+      "tts_infer_profile": "custom"
+    },
+    "claude": {
+      "character_id": "claude",
+      "label": "Claude 娘的聲音",
+      "exp_name": "claude_clean",
+      "source_video": "assets/voice/2026-11-25 00-08-27.mp4",
+      "clean_vocal": "assets/voice/clean_claude_vocal.wav",
+      "ref_audio": "assets/voice/ref_claude.wav",
+      "ref_text": "assets/voice/ref_claude.txt",
+      "gpt_weights": "tools/GPT-SoVITS/GPT_weights_v2/claude_clean-e12.ckpt",
+      "sovits_weights": "tools/GPT-SoVITS/SoVITS_weights_v2/claude_clean_e6_s306.pth",
+      "tts_infer_profile": "claude"
+    }
+  }
+}
