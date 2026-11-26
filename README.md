@@ -1,6 +1,6 @@
-# 哈Gemi早報 — 專案導覽與新對話接手指南
+# 哈Gemi頻道 — 專案導覽與新對話接手指南
 
-《哈Gemi早報》是一套半自動化的 AI 科技新聞日更影片生產線，將 **「抓取新聞 → 查重寫稿 → 網頁截圖 → GPT-SoVITS 雙語配音與對嘴 → Remotion 1080p 渲染 → 封面縮圖 → 上傳 YouTube 草稿」** 串接成完整工作流。
+這是 **哈Gemi（基米）** 的個人 YouTube 頻道自動化與內容製作專案，涵蓋《哈Gemi早報》、直式 `9:16` YouTube Shorts、深度紀實長片與其他頻道企劃，整合了 **「抓取新聞 → 查重寫稿 → 網頁截圖 → GPT-SoVITS 雙語配音與對嘴 → Remotion 1080p 渲染 → 封面縮圖 → 上傳 YouTube 草稿」** 等完整工作流。
 
 ---
 
@@ -70,6 +70,7 @@ d:\youtube\.venv\Scripts\python.exe d:\youtube\scripts\produce_longform.py --dir
 | [scripts/train_hajimi_clean.py](scripts/train_hajimi_clean.py) | 使用 UVR5 分離後的純人聲乾軌進行 GPT-SoVITS CPU 微調訓練 |
 | [assets/models/catalog.json](assets/models/catalog.json) | 12 位 AI 模型娘去背立繪與三視圖素材庫索引 |
 | [DEV_LOG.md](DEV_LOG.md) | 完整系統架構演進、自動化設計邏輯與問題排錯紀錄 |
+| [knowledge/hagemy-persona.md](knowledge/hagemy-persona.md) | 哈Gemi（基米）核心人設設定集（全頻道企劃共用，獨立於各工作流 Skill） |
 | [knowledge/human-meme-kb/meme-lab/README.md](knowledge/human-meme-kb/meme-lab/README.md) | 文案靈感與圈內梗詞庫 |
 | [output/history.json](output/history.json) | 歷屆已報導的 URL 與主題紀錄（用於每日去重） |
 | `output/YYYY-MM-DD/` | 每日產出目錄（含 `raw_news.json`、`briefing.json`、`ha_gemi_YYYY-MM-DD.mp4`、`thumbnail.png`、`youtube_meta.txt`） |

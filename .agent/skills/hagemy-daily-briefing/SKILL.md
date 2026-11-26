@@ -20,8 +20,8 @@ description: End-to-end daily production workflow for 《哈Gemi早報》 AI new
    * **`cover.headline`（YouTube 標題前段）**：必須是當日最強單一爆點（含具體人物／大廠／數字或反轉衝突），控制在 `15～22` 字以內，**禁止把「哈Gemi早報」放最前面**（由 `export_yt_meta.py` 自動將 `｜哈Gemi早報` 放在標題最後）。
    * **`cover.script`（前 5 秒開頭）**：**第一句必須直接拋出頭條爆點或反問**，再接簡短問候「早安喵，我是哈Gemi」，避免先講冗長開場白導致觀眾前 4 秒滑走（例：`「黃仁勳竟然殺回 Nvidia 當執行長了？！早安喵，今天還有開源閉源大戰再度開火，3 分鐘帶你速覽 5 大專欄與 6 條快訊！」`）。
 2. **人設與語氣規範**：
-   * 主播為元氣貓娘「哈Gemi」，口語自然俐落、像在跟朋友聊今天 AI 圈大事。
-   * 僅在開場（`cover`）與片尾（`outro`）句尾自然帶「喵」，正文專欄不刻意堆疊賣萌語氣詞。
+   * 寫稿前必須先讀取並遵循 [hagemy-persona.md](file:///d:/youtube/knowledge/hagemy-persona.md)（本工作流不重複定義人設，僅補充早報節目規範）。
+   * 僅在開場（`cover`）與片尾（`outro`）句尾必帶「喵」，正文專欄保持俐落，僅於哈氣或情緒轉折時偶爾點綴。
    * 適度參考 `knowledge/human-meme-kb/meme-lab/README.md` 詞庫，每條專欄最多自然融入 1 個圈內梗，切忌硬湊。
 3. **查重與過濾規則**：
    * 讀取 `output/YYYY-MM-DD/raw_news.json` 與 `output/history.json`。
