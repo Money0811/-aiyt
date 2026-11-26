@@ -4,7 +4,7 @@
 1. **每日《哈Gemi早報》**（`1920×1080`）：抓取新聞 → 查重寫稿 → Playwright 網頁截圖 → GPT-SoVITS 雙語配音與對嘴 → Remotion 渲染 → 封面縮圖 → YouTube 上傳與章節/CC 字幕匯出。
 2. **直式 YouTube Shorts**（`1080×1920`）：單點快訊與技術科普短影音（`ShortBriefing.tsx`）。
 3. **深色紀實長片**（`1920×1080`）：多章節深度專題紀錄片（`Documentary.tsx`），支援 12 位 AI 模型娘群像素材庫。
-4. **AI 翻唱與 MV 管線**：`yt-dlp` 抓源 → `audio-separator`（`UVR-MDX-NET-Voc_FT`）人聲分離 → 本地 CPU RVC（Applio V3.7.2 + `rmvpe` + `contentvec`）歌聲轉換 → `scipy` 毫秒級自動對齊 → `ffmpeg` 工作室混音。
+4. **AI 翻唱與 MV 管線**：`yt-dlp` 抓源 → `audio-separator`（`UVR-MDX-NET-Voc_FT`）人聲分離 → 本地 CPU RVC（Applio V3.7.2 + `rmvpe` + `contentvec`）歌聲轉換 → `scipy` 毫秒級自動對齊 → **`rvc_pro_mix.py`（Pedalboard + Pyloudnorm 專業混音母帶）**／`ffmpeg` 降調處理。
 
 ---
 
@@ -59,15 +59,18 @@ d:\youtube\.venv\Scripts\python.exe d:\youtube\scripts\produce_short.py --dir ou
 d:\youtube\.venv\Scripts\python.exe d:\youtube\scripts\produce_longform.py --dir output/longform/<主題資料夾>
 ```
 
-### 3. AI 翻唱自動化工作流（RVC ＋ 混音）
+### 3. AI 翻唱自動化工作流（RVC ＋ 專業調音混音）
 ```powershell
-# 一鍵執行 yt-dlp 下載 → audio-separator 人聲分離 → 本地 CPU RVC 推論 → 自動對齊 → ffmpeg 混音
+# 一鍵執行 yt-dlp 下載 → audio-separator 人聲分離 → 本地 CPU RVC 推論 → 自動對齊 → 基礎混音
 d:\youtube\.venv\Scripts\python.exe d:\youtube\scripts\produce_cover.py
+
+# 使用新調音引擎（Pedalboard + Pyloudnorm + Librosa）：輸出 24-bit WAV 與 V0 MP3
+d:\youtube\.venv\Scripts\python.exe d:\youtube\scripts\rvc_pro_mix.py --vocal output/covers/<歌名>/gemini_rvc_vocal_clean.wav --inst output/covers/<歌名>/inst_pitch_-2.wav --out-wav output/covers/<歌名>/gemini_pro_mix.wav --out-mp3 output/covers/<歌名>/gemini_pro_mix.mp3
 ```
-局部重跑參數（`produce_cover.py`）：
-* `--skip-sep`：跳過人聲與伴奏分離
-* `--skip-rvc`：跳過本地 CPU RVC 推論
-* `--skip-mix`：跳過最後混音輸出
+局部重跑與調音說明：
+* `produce_cover.py`：`--skip-sep`（跳過分離）、`--skip-rvc`（跳過 RVC）、`--skip-mix`（跳過基礎混音）。
+* `rvc_pro_mix.py`：支援頻譜診斷、NoiseGate、外科手術 EQ（350Hz 去塑膠感／6.5kHz 去齒音／11kHz 空氣感）、並聯阻尼殘響、ITU-R BS.1770-4 LUFS 自動響度對齊與 `-1.0 dBTP` Limiter；若伴奏需降調（如 `-2` 半音），需先以 `ffmpeg rubberband` 處理伴奏後再傳入 `--inst`。
+* **高音／八度跳音防呆**：若分離後的乾軌殘留低頻伴奏導致 `rmvpe` 誤判八度瞬跳，可先對乾軌做 `220 Hz` 高通濾波再進 RVC 推論。
 
 ---
 
@@ -91,7 +94,8 @@ d:\youtube\.venv\Scripts\python.exe d:\youtube\scripts\produce_cover.py
 | [scripts/produce_episode.py](scripts/produce_episode.py) | 早報總控腳本（串接截圖、配音、Remotion 渲染、資訊欄與上傳） |
 | [scripts/produce_short.py](scripts/produce_short.py) | 直式 `1080×1920` YouTube Shorts 總控腳本 |
 | [scripts/produce_longform.py](scripts/produce_longform.py) | 深色紀實長片（`Documentary.tsx`）總控腳本 |
-| [scripts/produce_cover.py](scripts/produce_cover.py) | AI 翻唱總控腳本（分離、本地 CPU RVC 推論、自動對齊與工作室混音） |
+| [scripts/produce_cover.py](scripts/produce_cover.py) | AI 翻唱總控腳本（分離、本地 CPU RVC 推論、自動對齊與基礎混音） |
+| [scripts/rvc_pro_mix.py](scripts/rvc_pro_mix.py) | 進階 AI 翻唱調音與母帶引擎（Pedalboard EQ/壓縮/並聯殘響 + Pyloudnorm LUFS 對齊） |
 | [scripts/train_hajimi_clean.py](scripts/train_hajimi_clean.py) | 使用 UVR5 分離後的純人聲乾軌進行 GPT-SoVITS CPU 微調訓練 |
 | [output/history.json](output/history.json) | 歷屆已報導的 URL 與主題紀錄（用於每日去重） |
 
@@ -102,7 +106,7 @@ d:\youtube\.venv\Scripts\python.exe d:\youtube\scripts\produce_cover.py
 * **已完成內容產出**：
   * **早報**：`2026-11-22`、`2026-11-23`、`2026-11-24`（均已登錄於 [output/history.json](output/history.json)）。
   * **Shorts 與長片**：已產出黎曼猜想／黃仁勳回鍋 Shorts，以及 10 章節深色紀實長片《開源逆襲戰》（8.4 分鐘）。
-  * **AI 翻唱**：已完成《又三郎》日語翻唱問題排查與工作室級混音調校（`v4_balanced`），並打通本地 CPU RVC 推論自動化管線。
+  * **AI 翻唱**：已完成《又三郎》日語翻唱混音調校（`v4_balanced`），並完成《アルジャーノン》降 2 半音翻唱（`220 Hz` 高通修復全曲 `rmvpe` 八度跳音）、[rvc_pro_mix.py](scripts/rvc_pro_mix.py) 低空間感專業混音與雙語 LRC 歌詞製作。
 * **語音與歌聲模型狀態**：
   * **口播（GPT-SoVITS v2）**：以 OBS 內錄 ＋ UVR5（`HP5_only_main_vocal`）清洗的 104 段乾軌完成微調，目前預設 `hajimi_clean-e12.ckpt` ＋ `hajimi_clean_e6_s312.pth` 搭配 `ref_hajimi_clean.wav`；另於 [voices.json](assets/voice/voices.json) 預留 `claude` 音色。
   * **翻唱（Applio RVC V3.7.2）**：於 Colab T4 GPU 完成 250 epochs 訓練（`hajimi_200e_5600s.pth` / `hajimi_250e_7000s.pth` + `hajimi.index`），預設日語推論參數為 `rmvpe`、`default_pitch: -2`、`index_rate: 0.13`、`volume_envelope: 0.25`、`protect: 0.5`。

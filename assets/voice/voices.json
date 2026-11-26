@@ -11,7 +11,18 @@
       "ref_text": "assets/voice/ref_hajimi_clean.txt",
       "gpt_weights": "tools/GPT-SoVITS/GPT_weights_v2/hajimi_clean-e12.ckpt",
       "sovits_weights": "tools/GPT-SoVITS/SoVITS_weights_v2/hajimi_clean_e6_s312.pth",
-      "tts_infer_profile": "custom"
+      "tts_infer_profile": "custom",
+      "rvc": {
+        "pth_path": "tools/RVC/logs/hajimi/hajimi_200e_5600s.pth",
+        "pth_alt_path": "tools/RVC/logs/hajimi/hajimi_250e_7000s.pth",
+        "index_path": "tools/RVC/logs/hajimi/hajimi.index",
+        "default_pitch": -2,
+        "index_rate": 0.13,
+        "volume_envelope": 0.25,
+        "protect": 0.5,
+        "f0_method": "rmvpe",
+        "embedder_model": "contentvec"
+      }
     },
     "claude": {
       "character_id": "claude",

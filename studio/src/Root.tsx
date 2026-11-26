@@ -33,6 +33,15 @@ import {
 } from './compositions/Documentary';
 import { CodeDocMvp } from './compositions/CodeDocMvp';
 import { DocumentaryThumbnail } from './compositions/DocumentaryThumbnail';
+import { MatasaburoMV, MatasaburoMVProps, parseLrc } from './compositions/matasaburo/MatasaburoMV';
+import { MatasaburoThumbnail } from './compositions/matasaburo/MatasaburoThumbnail';
+import {
+  AlgernonMV,
+  AlgernonMVProps,
+  parseBilingualLrc,
+} from './compositions/algernon/AlgernonMV';
+import { AlgernonThumbnail } from './compositions/algernon/AlgernonThumbnail';
+import { TOTAL_FRAMES as ALGERNON_TOTAL_FRAMES } from './compositions/algernon/constants';
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -207,6 +216,73 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="DocumentaryThumbnail"
         component={DocumentaryThumbnail}
+        durationInFrames={1}
+        fps={30}
+        width={1280}
+        height={720}
+      />
+      <Composition
+        id="MatasaburoMV"
+        component={MatasaburoMV}
+        durationInFrames={6960}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          lyrics: [],
+          debugLipSync: false,
+        }}
+        calculateMetadata={async ({
+          props,
+        }): Promise<{
+          props: MatasaburoMVProps;
+        }> => {
+          const res = await fetch(staticFile('mv/matasaburo/lyrics.lrc'));
+          const text = await res.text();
+          return {
+            props: {
+              ...props,
+              lyrics: parseLrc(text, 30),
+            },
+          };
+        }}
+      />
+      <Composition
+        id="MatasaburoThumbnail"
+        component={MatasaburoThumbnail}
+        durationInFrames={1}
+        fps={30}
+        width={1280}
+        height={720}
+      />
+      <Composition
+        id="AlgernonMV"
+        component={AlgernonMV}
+        durationInFrames={ALGERNON_TOTAL_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          lyrics: [],
+        }}
+        calculateMetadata={async ({
+          props,
+        }): Promise<{
+          props: AlgernonMVProps;
+        }> => {
+          const res = await fetch(staticFile('mv/algernon/lyrics.lrc'));
+          const text = await res.text();
+          return {
+            props: {
+              ...props,
+              lyrics: parseBilingualLrc(text, 30),
+            },
+          };
+        }}
+      />
+      <Composition
+        id="AlgernonThumbnail"
+        component={AlgernonThumbnail}
         durationInFrames={1}
         fps={30}
         width={1280}

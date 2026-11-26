@@ -52,9 +52,13 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--date", default="2026-11-22")
     parser.add_argument("--video", default="")
+    parser.add_argument("--thumb", default="")
     parser.add_argument("--meta", default="")
     parser.add_argument("--captions", default="")
     parser.add_argument("--privacy", default="private", choices=["private", "unlisted", "public"])
+    parser.add_argument("--publish-at", default="", help="ISO-8601 scheduled publish time, e.g. 2026-11-27T07:30:00+08:00")
+    parser.add_argument("--category", default="28")
+    parser.add_argument("--tags", default="")
     args = parser.parse_args()
 
     ep_dir = ROOT_DIR / "output" / args.date
@@ -66,27 +70,38 @@ def main() -> None:
             raise FileNotFoundError(f"在 {ep_dir} 找不到 .mp4 影片檔")
         video_path = mp4s[0]
 
-    thumb_path = ep_dir / "thumbnail.png"
+    thumb_path = Path(args.thumb) if args.thumb else (ep_dir / "thumbnail.png")
     meta_path = Path(args.meta) if args.meta else (ep_dir / "youtube_meta.txt")
     title, description = parse_meta(meta_path)
 
+    privacy_status = "private" if args.publish_at else args.privacy
+    tags = (
+        [t.strip() for t in args.tags.split(",") if t.strip()]
+        if args.tags
+        else ["AI新聞", "人工智慧", "哈Gemi早報", "科技早報", "AI趨勢"]
+    )
+
     print(f"Uploading video: {video_path.name}")
     print(f"Title: {title}")
-    print(f"Privacy: {args.privacy}")
+    print(f"Privacy: {privacy_status}" + (f" (Scheduled: {args.publish_at})" if args.publish_at else ""))
 
     youtube = get_authenticated_service()
+    status_body: dict[str, object] = {
+        "privacyStatus": privacy_status,
+        "selfDeclaredMadeForKids": False,
+    }
+    if args.publish_at:
+        status_body["publishAt"] = args.publish_at
+
     body = {
         "snippet": {
             "title": title,
             "description": description,
-            "tags": ["AI新聞", "人工智慧", "哈Gemi早報", "科技早報", "AI趨勢"],
-            "categoryId": "28",  # Science & Technology
+            "tags": tags,
+            "categoryId": args.category,
             "defaultLanguage": "zh-TW",
         },
-        "status": {
-            "privacyStatus": args.privacy,
-            "selfDeclaredMadeForKids": False,
-        },
+        "status": status_body,
     }
 
     media = MediaFileUpload(str(video_path), chunksize=1024 * 1024 * 8, resumable=True)

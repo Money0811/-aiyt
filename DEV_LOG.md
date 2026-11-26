@@ -1,6 +1,6 @@
 # 《哈Gemi早報》開發與迭代日誌 (DEV_LOG)
 
-> 最後更新：2026-11-25  
+> 最後更新：2026-11-27  
 > 本文件盤點「基米哈Gemi 運營中 / 《哈Gemi早報》」專案的完整檔案結構、系統架構演進、核心自動化規範（`SKILL.md` 與各腳本邏輯）以及開發過程中解決的實戰問題。
 
 ---
@@ -33,6 +33,8 @@ d:\youtube\
 │   ├── upload_youtube.py           # YouTube Data API v3 上傳腳本（支援 --video / --meta）
 │   ├── produce_episode.py          # 日更早報一鍵總控腳本（支援局部 --skip-* 重跑）
 │   ├── produce_short.py            # 直式 9:16 Shorts 一鍵總控腳本
+│   ├── produce_cover.py            # AI 翻唱一鍵總控腳本（分離、本地 RVC、對齊、混音）
+│   ├── rvc_pro_mix.py              # Pedalboard + Pyloudnorm + Librosa 專業混音母帶引擎
 │   ├── train_hajimi_cpu.py         # GPT-SoVITS v2 Windows CPU 微調訓練自動化腳本
 │   ├── prepare_pixel_intro.py      # 像素風頻道自介音訊與腳本前處理
 │   └── remove_bg.py                # 角色立繪去背處理工具
@@ -166,3 +168,25 @@ d:\youtube\
 | 初版混音「太空靈」→ 去混響版「KTV 乾唱感重」→ 第三版「伴奏蓋過人聲」 | 相關性實測前後 60 秒延遲皆為 `-0.96s`（無跑拍）；實測人聲發聲段 RMS `-14.09 dB`、伴奏 `-13.3 dB`，且人聲 **`>10kHz` 高頻能量僅 `0.024%`**。<br>• `v2` 疊加 45/75ms 長 echo 變空靈<br>• `v2_dry` 零空間＋人聲凸出 ~5 dB 變 KTV<br>• `v3` 人聲砍至 `0.88`（`makeup=1`）＋伴奏拉至 `0.90` 導致被電吉他牆淹沒 | 定案版（`v4_balanced`）：伴奏以 `ffmpeg rubberband` 降 `-2` 半音對齊調性、設 `volume=0.80` 並於 `2.8kHz` 微挖 `-1.5 dB` 讓位；人聲延遲 `960ms` 對齊、設 `volume=1.05`、補 `6.5kHz` 空氣感與極短 `12/22ms` 早期反射，最後經總線膠合壓縮與 Limiter 輸出 |
 
 
+
+### 4. 本地 CPU RVC 推論自動化工作流（`2026-11-26`）
+* **推論底模與分離工具補齊**：於 `tools/RVC/.venv` 安裝純 CPU ONNX 版 `audio-separator==0.48.0`，並僅下載推論必備底模 `predictors/rmvpe.pt`（172.79 MB）與 `embedders/contentvec/pytorch_model.bin`（360.82 MB）＋ `config.json`（略過 1.5 GB 訓練底模）。
+* **本地 CPU 實測基準**：以 15 秒人聲切段實測 `core.py infer`（`rmvpe` + `contentvec` + `hajimi_200e_5600s.pth` + `hajimi.index`），含冷啟動載入總耗時 **`88.28 秒`**，成功產出 `1.37 MB` WAV。
+* **配置與一鍵腳本落地**：
+  * 擴充 [voices.json](file:///d:/youtube/assets/voice/voices.json)，於 `gemini` 新增 `rvc` 區塊管理模型路徑與預設日語翻唱參數（`default_pitch: -2`、`index_rate: 0.13`、`volume_envelope: 0.25`、`protect: 0.5`）。
+  * 新增一鍵翻唱總控腳本 [produce_cover.py](file:///d:/youtube/scripts/produce_cover.py)，串接「`yt-dlp` 下載 → `audio-separator` 分離 → 本地 `core.py infer` → `scipy` 毫秒級自動對齊 → `ffmpeg` 工作室混音」，並支援 `--skip-sep`、`--skip-rvc`、`--skip-mix` 局部重跑。
+
+---
+
+## 七、 2026-11-26～27 《アルジャーノン》翻唱實戰與 `rvc_pro_mix.py` 專業混音升級
+
+### 1. Pedalboard + Pyloudnorm 專業混音引擎（[rvc_pro_mix.py](file:///d:/youtube/scripts/rvc_pro_mix.py)）
+取代過去較陽春的 `ffmpeg` 濾鏡鏈，建立模組化工作室級人聲混音與母帶腳本：
+* **Librosa 頻譜診斷**：自動偵測 `<250 Hz` 低頻混濁、`250–500 Hz` 塑膠感、`5.5–9 kHz` 齒音與 `>10 kHz` 空氣感佔比。
+* **前置清理與外科手術式 EQ**：`85 Hz` Highpass + `-45 dB` NoiseGate 去除句間底噪；`350 Hz`（`-2.8 dB`）削弱 RVC 塑膠／悶糊感、`3 kHz`（`+1.5 dB`）補臨場感、`6.5 kHz`（`-3.5 dB`）去齒音、`11 kHz`（`+2.2 dB`）補空氣感，接續人聲壓縮（`-18 dB` / `3:1`）。
+* **並聯阻尼殘響（Parallel Reverb Send/Return）**：經 `200 Hz` 高通後獨立混合濕聲；依《アルジャーノン》試聽回饋將空間感調降收緊（`room_size: 0.22`、`damping: 0.72`、`width: 0.55`、`return_mix: 0.07`）。
+* **ITU-R BS.1770-4 響度對齊與母帶輸出**：伴奏 `2.8 kHz` 微挖 `-1.5 dB` 讓位，將伴奏鎖定 `-16.0 LUFS`、人聲自動對齊至 `-13.5 LUFS`（高出 `+2.5 dB`），再經總線膠合壓縮與 `-1.0 dBTP` True-Peak Limiter，輸出 24-bit WAV 與 V0 高品質 MP3。
+
+### 2. 《アルジャーノン》全曲 `rmvpe` 八度瞬跳排查與雙語歌詞
+* **爆音根因定位**：`audio-separator`（`UVR-MDX-NET-Voc_FT.onnx`）分離後的乾軌仍殘留 `<220 Hz` 低頻伴奏，導致 `rmvpe` 在全曲多達 **35 處**（如 `2:15` 副歌段）誤判為低八度並在 `175 Hz ↔ 350 Hz` 間劇烈瞬跳，造成 HiFi-GAN 聲碼器破音（峰值飆至 `0.87–0.99`）。
+* **全曲修復與成品**：對乾軌套用 `220 Hz` 四階 Butterworth 高通濾波（`vocal_dry_hp220.wav`）後以 `--pitch -2` 重跑全曲 RVC 推論，並將伴奏以 `rubberband` 降 2 半音對齊後交由 `rvc_pro_mix.py` 輸出貼耳版 [gemini_pro_mix_tight.wav](file:///d:/youtube/output/covers/algernon/gemini_pro_mix_tight.wav) / `.mp3`（`-10.34 LUFS` / `-1.00 dBTP`），同時備妥繁中雙語同步歌詞 [lyrics.lrc](file:///d:/youtube/assets/mv/algernon/lyrics.lrc) 與交接檔 [HANDOFF.md](file:///d:/youtube/output/covers/algernon/HANDOFF.md)。

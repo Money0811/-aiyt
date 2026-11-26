@@ -1,134 +1,132 @@
 {
-  "date": "2026-11-25",
-  "date_display": "11月25日 · 星期三",
-  "date_short": "11.25 週三",
+  "date": "2026-11-26",
+  "date_display": "11月26日 · 星期四",
+  "date_short": "11.26 週四",
   "channel_name": "哈Gemi早報",
   "filtered_stats": {
-    "raw_total": 103,
+    "raw_total": 98,
     "duplicated_with_history": 14,
-    "excluded_tutorials_or_offtopic": 24,
+    "excluded_tutorials_or_offtopic": 22,
     "columns_selected": 5,
     "flash_selected": 6
   },
   "cover": {
-    "badge": "⚡ 11月25日 AI 晨間頭條",
-    "tag": "🔥 今日 AI 圈焦點",
-    "headline": "Tidal 狠刪 2,900 萬首 AI 音樂！",
-    "subheadline": "Anthropic 股價跌破 IPO 發行價，GPT-6 展現原生蛋白質設計能力",
+    "badge": "⚡ 11月26日 AI 晨間頭條",
+    "tag": "🚀 太空算力時代",
+    "headline": "SpaceX 獲准發射 100 萬顆 AI 衛星！",
+    "subheadline": "S&P 擬降評 Nvidia，Character.AI 破產拍賣私密對話遭攔截",
     "bars": [
       {
         "label": "頭條焦點",
         "color": "red",
-        "status": "Tidal 全面封殺 AI 曲 · HN 313 分"
+        "status": "FCC 放行 Starmind · 100 萬顆太空資料中心"
       },
       {
-        "label": "產業與開源",
+        "label": "產業震盪",
         "color": "amber",
-        "status": "Anthropic 破發 · 三元量化 27B 登場"
+        "status": "Nvidia 評等預警 · 2,100 萬用戶隱私保衛戰"
       }
     ],
-    "banner": "🚀 還有：OpenAI 與 Anthropic 數學搶發大戰 · 微軟紅色警戒等 6 條快訊！",
+    "banner": "🚀 還有：OpenAI 推翻 Hirsch 猜想、24-Byte 種子神經網路與 6 條快訊！",
     "character_image": "character/opening_normal.png",
     "character_closed_image": "character/opening_normal_closed.png",
     "character_mode": "normal",
-    "script": "早安喵！歡迎收看今天的哈Gemi早報！今天串流音樂界直接開出第一槍，Tidal宣布狠砍近3000萬首AI歌曲，還有Anthropic上市後股價跌破發行價與GPT-6最新生醫突破，馬上帶你掌握！"
+    "script": "SpaceX 居然獲准發射 100 萬顆 AI 衛星上太空蓋資料中心了？！早安喵，我是哈Gemi！今天還有 Nvidia 信用評等拉警報、Character.AI 私密對話差點被拍賣，3 分鐘帶你速覽 5 大專欄與 6 條快訊！"
   },
   "agenda": {
     "progress_badge": "今日目錄",
     "header_title": "5 大專欄 ＋ 6 條快訊",
-    "estimated_duration": "03:15",
+    "estimated_duration": "03:45",
     "character_image": "character/opening_normal.png",
     "character_closed_image": "character/opening_normal_closed.png",
     "character_mode": "normal",
-    "script": "今天這5條從串流平台反擊AI垃圾歌、Anthropic破發風波到三元量化新模型與數學搶發戰通通整理好了，直接來看第1條！"
+    "script": "今天從太空 AI 算力、晶片巨頭治理危機，一路看到數學猜想突破與 6 條必追快訊，我們馬上進第 1 條！"
   },
   "columns": [
     {
       "index": 1,
-      "chapter_label": "1 Tidal狠刪2900萬AI音樂",
-      "header_title": "Tidal 封殺全 AI 生成音樂",
-      "tag_text": "HN 313 分熱議",
+      "chapter_label": "1 SpaceX百萬AI衛星",
+      "header_title": "SpaceX 獲准部署 100 萬顆 AI 衛星",
+      "tag_text": "FCC 正式放行",
       "tag_variant": "orange",
       "card_type": "evidence_zoom",
       "card_title": "原文 3x 放大",
-      "card_subtitle": "The Verge & TechCrunch 實拍 · 12 月 9 日正式生效",
-      "source_snippet": "theverge.com & variety.com — Tidal 宣布 12 月 9 日起全面禁止純 AI 生成音樂，預計下架約 2,900 萬首歌曲。",
+      "card_subtitle": "Starmind 太空資料中心計畫 · 軌道算力正式開戰",
+      "source_snippet": "The Verge & CNBC — FCC 正式核准 SpaceX「Starmind」計畫，授權部署最多 100 萬顆搭載 AI 晶片的資料中心衛星。",
       "zoom_label": "🔍 核心看點聚焦",
-      "zoom_content": "音樂主管 Robert Andersen 透露，AI 垃圾內容已淹沒串流平台，新政策上線後預計每天將攔截 8 萬到 8.5 萬首純 AI 曲目，但仍允許人類主導、AI 輔助的作品。",
-      "conclusion": "串流平台忍無可忍 · 拒絕讓「工業代餐」繼續洗版分潤",
+      "zoom_content": "地面資料中心卡在土地與電力瓶頸，馬斯克直接把 AI 伺服器搬到近地軌道。繼 Google 與 Blue Origin 喊話後，SpaceX 成為首家拿到 FCC 正式許可的業者，太空算力競賽正式點火。",
+      "conclusion": "軌道 AI 資料中心從科幻走入監管核准 · 太空散熱與發射密度成下一道考題",
       "character_image": "character/chibi_think.png",
       "character_mode": "chibi",
       "sources": [
-        "https://www.theverge.com/entertainment/1041362/tidal-ai-music-ban",
-        "https://techcrunch.com/2026/11/24/tidal-to-ban-and-remove-millions-of-ai-generated-tracks-as-ai-slop-inundates-music-streaming/",
-        "https://variety.com/2026/music/news/tidal-bans-ai-generated-music-1236956924/"
+        "https://www.theverge.com/science/1042278/spacex-fcc-starmind-ai-space-data-centers",
+        "https://www.cnbc.com/2026/11/25/spacex-fcc-satellite-approval.html"
       ],
-      "script": "第1條專欄來看音樂串流圈的重磅反擊！高音質平台Tidal正式宣布從12月9日起封殺純AI生成音樂，預計一口氣刪除高達2900萬首曲目，以後每天還要攔截8萬多首AI垃圾歌。官方直言平台已經被大量工業代餐洗版，雖然仍允許人類創作、AI輔助的作品，但純一鍵生成的曲子以後通通別想上架分潤了。",
+      "script": "第1條專欄直接衝出大氣層！美國聯邦通訊委員會FCC最新宣布，正式核准SpaceX的Starmind計畫，授權馬斯克在軌道部署最多100萬顆搭載AI晶片的資料中心衛星。現在地面機房天天被電力和土地卡脖子，SpaceX直接搶下第一張太空算力入場券，把Google和Blue Origin甩在後頭！不過100萬顆衛星的軌道擁擠度跟太空垃圾問題，接下來肯定也是吵翻天。",
       "screenshot_image": "episode/screenshots/col_1.png"
     },
     {
       "index": 2,
-      "chapter_label": "2 Anthropic破發與內部風波",
-      "header_title": "Anthropic 跌破 IPO 發行價",
-      "tag_text": "上市首波考驗",
+      "chapter_label": "2 Nvidia信評與治理危機",
+      "header_title": "S&P 擬降評 Nvidia · 治理風險升溫",
+      "tag_text": "華爾街警訊",
       "tag_variant": "stamp",
       "card_type": "quote_verdict",
-      "category_pill": "📉 資本與爭議",
-      "stamp_text": "多重風波夾擊",
-      "card_title": "股價破發！還爆出「接管世界」與蒸餾指控",
-      "card_subtitle": "TechCrunch & Hacker News 熱議 · 2026-11-25",
-      "verdict_text": "估值壓力遇上社群反彈 · 安全實驗室的華爾街蜜月期提前結束",
+      "category_pill": "🏛️ 產業震盪",
+      "stamp_text": "關鍵人物風險",
+      "card_title": "剛回歸就面臨信評下調壓力！",
+      "card_subtitle": "S&P 警告擬降至 AA- · 內部行為準則與 Megaspeed 調查持續延燒",
+      "verdict_text": "拒絕接班計畫的代價浮現 · 投資人緊盯公司治理與合規問責",
       "character_image": "character/chibi_chair.png",
       "character_closed_image": "character/chibi_chair_closed.png",
       "character_mode": "chibi",
       "sources": [
-        "https://techcrunch.com/2026/11/24/anthropic-shares-fall-below-ipo-price-a-worrying-sign-for-ai-startups/",
-        "https://novaramedia.com/2026/11/24/anthropic-staff-openly-talk-about-taking-over-the-world-claims-top-mit-physicist/",
-        "https://news.ycombinator.com/item?id=50630809"
+        "https://techcrunch.com/2026/11/25/sp-considers-nvidia-credit-downgrade-over-governance-and-key-man-risks/",
+        "https://techcrunch.com/2026/11/25/jensen-huang-broke-nvidias-code-of-conduct-and-his-employees-may-not-forget-it/"
       ],
-      "script": "第2條專欄來看剛上市的Anthropic遇到的逆風！TechCrunch報導指出，Anthropic股價已經跌破IPO發行價，給整個AI新創估值敲響警鐘。屋漏偏逢連夜雨，MIT物理學家Max Tegmark公開爆料稱Anthropic員工私下常談論接管世界，同時HN上也有新創發文抱怨被Anthropic指控模型蒸餾卻無從自證，公關與資本雙重壓力正全面浮現。",
+      "script": "第2條專欄來看Nvidia的後續震盪。黃仁勳雖然剛重返執行長大位，但信評機構標普全球警告，因為公司治理和高度依賴單一領袖的關鍵人物風險，正在考慮把Nvidia的信用評等下調到AA-。更棘手的是，TechCrunch指出黃仁勳依然抗拒設立接班人制度，加上之前違反公司行為準則以及Megaspeed晶片流向調查還沒落幕，員工士氣和董事會壓力都才正要開始考驗！",
       "screenshot_image": "episode/screenshots/col_2.png"
     },
     {
       "index": 3,
-      "chapter_label": "3 GPT-6蛋白質設計突破",
-      "header_title": "GPT-6 原生設計出活性蛋白質",
-      "tag_text": "OpenAI 生醫進展",
+      "chapter_label": "3 Character.AI拍賣對話",
+      "header_title": "Character.AI 擬拍賣用戶對話遭攔截",
+      "tag_text": "隱私保衛戰",
       "tag_variant": "stamp",
       "card_type": "screenshot_bullets",
-      "card_title": "不靠專用生醫模型 · 推理加寫碼直接設計蛋白質",
-      "card_subtitle": "OpenAI 官方研究發布 · HN 破百討論",
+      "card_title": "2,100 萬帳號私密聊天差點隨破產出售",
+      "card_subtitle": "多州檢察長聯手喊卡 · 含 210 萬未成年用戶資料",
       "bullets": [
-        "GPT-6 僅靠通用推理與程式碼能力，即可直接設計蛋白質序列與結構",
-        "濕實驗室測試證實，設計出的序列在 5 個目標靶點皆展現結合證據",
-        "象徵通用大語言模型正直接跨入過去由 AlphaFold 等專用模型主導的領域"
+        "Character.AI 破產資產拍賣計畫涵蓋超過 2,100 萬美國用戶私人對話",
+        "其中包含 210 萬名未成年人註冊帳號的敏感互動紀錄",
+        "多州檢察長正式介入反對，要求優先保障隱私與資料刪除權"
       ],
-      "mini_stamp": "通用模型跨界實證",
+      "mini_stamp": "監管出手攔截",
       "character_image": "character/chibi_phone.png",
       "character_mode": "chibi",
       "sources": [
-        "https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities"
+        "https://techcrunch.com/2026/11/25/state-ags-fight-character-ais-plan-to-auction-off-users-private-chats/"
       ],
-      "script": "第3條專欄來看OpenAI的最新生醫實證！OpenAI宣布GPT-6系列模型展現了原生的蛋白質設計能力，不需要額外微調成專用生醫模型，光靠原本的推理與寫代碼能力就能設計出蛋白質結構與序列，而且實驗室測試已經在5個靶點上測出實際結合反應！通用模型跨界科學研發的門檻又被大幅降低了。",
+      "script": "第3條專欄要提醒大家小心AI聊天紀錄的歸屬問題！昔日爆紅的Character.AI在進入破產程序後，竟然打算把超過2,100萬名美國用戶的私密對話資料當成資產一起拍賣，裡面甚至包含210萬個未成年人帳號！好在美國多州檢察長已經聯手出面反對。這件事也算給所有AI重度用戶敲響警鐘：你每天對著AI吐露的心事，萬一公司倒閉了到底算誰的？",
       "screenshot_image": "episode/screenshots/col_3.png"
     },
     {
       "index": 4,
-      "chapter_label": "4 三元Bonsai與Beam開源模型",
-      "header_title": "三元量化 27B 與 Beam 報告",
-      "tag_text": "開源壓縮新突破",
+      "chapter_label": "4 數學突破與HN震撼",
+      "header_title": "OpenAI 推翻 Hirsch 猜想與數學地震",
+      "tag_text": "HN 破 760 熱議",
       "tag_variant": "orange",
       "card_type": "terminal_dark",
-      "card_title": "極致低算力推論：27B 三元模型與 501B MoE",
-      "card_subtitle": "Ternary Bonsai 2.5 27B (HN 259 分) · Beam 算力省 4 倍",
-      "terminal_box_text": "prismml.com/news/bonsai-2-5-27b & huggingface.co/papers/2611.26358",
+      "card_title": "AI 數學連環突破震驚複雜度學界！",
+      "card_subtitle": "Scott Aaronson 發文引爆 601 則留言 · 實驗室再傳神秘進展",
+      "terminal_box_text": "OpenAI Math 預印本證偽多項式 Hirsch 猜想 · Anthropic 同步縮短 GRH Lean 驗證",
       "pills": [
         {
-          "text": "Bonsai 27B HN 259分",
+          "text": "HN 762 分熱議",
           "color": "amber"
         },
         {
-          "text": "Beam 省 3～4 倍算力",
+          "text": "多項式 Hirsch 證偽",
           "color": "blue"
         }
       ],
@@ -136,78 +134,79 @@
       "character_closed_image": "character/chibi_excited_closed.png",
       "character_mode": "chibi",
       "sources": [
-        "https://prismml.com/news/bonsai-2-5-27b",
-        "https://huggingface.co/papers/2611.26358"
+        "https://scottaaronson.blog/?p=10379",
+        "https://github.com/openai/math/blob/main/preprints/Superpolynomial-graph-diameter-of-simple-polytopes-November-24-2026/paper.pdf"
       ],
-      "script": "第4條專欄來看今天開源與低算力模型的兩大亮點！首先PrismML推出的Ternary Bonsai 2.5 27B在Hacker News衝上259分，主打三元權重壓縮大幅降低硬體負擔；另一邊Hugging Face熱門論文Beam技術報告也公開了一款總參數501B、每次僅激活23.4B的MoE模型，支援百萬上下文且推論算力比同級模型少3到4倍，性價比直接拉滿！",
+      "script": "第4條專欄帶大家看今天Hacker News最震撼的學術圈風暴！知名電腦科學家Scott Aaronson在部落格連發四次驚呼，直言現在發生的AI科學突破規模太驚人，貼文狂吸762分和600多則留言。同一時間，OpenAI數學團隊也公開預印本，證偽了困擾學界數十年的多項式Hirsch猜想；網路上甚至流出實驗室可能攻克多項式因數分解的傳聞，雖然還沒證實，但這波AI數學奇點真的讓人坐不住了！",
       "screenshot_image": "episode/screenshots/col_4.png"
     },
     {
       "index": 5,
-      "chapter_label": "5 OpenAI搶發數學證明反擊",
-      "header_title": "OpenAI 與 Anthropic 搶數學首發",
-      "tag_text": "頂尖實驗室交鋒",
+      "chapter_label": "5 24Byte分形神經網路",
+      "header_title": "24-Byte 種子取代網路權重：FNS",
+      "tag_text": "論文精選",
       "tag_variant": "stamp",
       "card_type": "evidence_zoom",
       "card_title": "原文 3x 放大",
-      "card_subtitle": "OpenAI GitHub 貼出 11 月 23 日預印本時間戳記",
-      "source_snippet": "github.com/openai/math — OpenAI reveals they solved VP ≠ VNP before Anthropic。",
-      "zoom_label": "🔍 核心看點聚焦",
-      "zoom_content": "繼昨天 Anthropic 在 GitHub 公開「VP ≠ VNP over Every Field」形式化數學專案後，OpenAI 隨即公開自家早先一步完成的預印本，兩大巨頭在計算複雜度難題上公開較勁。",
-      "conclusion": "AI 實驗室戰場從跑分榜一路打進純數學形式化證明賽道",
+      "card_subtitle": "Hugging Face Daily Papers 精選 · 邊緣裝置儲存革命",
+      "source_snippet": "arXiv:2611.32393 — Fractal Neural Synthesis (FNS) 以常數級 24-Byte 座標種子動態生成隱藏層權重。",
+      "zoom_label": "🔍 論文摘要聚焦",
+      "zoom_content": "傳統神經網路的 Flash 儲存空間隨參數量線性暴增 O(W)，讓微型晶片吃不消；FNS 改用複數二次邊界動力學，只存一個 24-Byte 種子就能即時推導權重矩陣。",
+      "conclusion": "從「存整張權重表」改為「存數學生成公式」 · 極限壓縮邊緣 AI 體積",
       "character_image": "character/chibi_explain.png",
       "character_closed_image": "character/chibi_explain_closed.png",
       "character_mode": "chibi",
       "sources": [
-        "https://github.com/openai/math/tree/main/preprints/VP-and-VNP-are-different-November-23-2026"
+        "https://huggingface.co/papers/2611.32393",
+        "https://arxiv.org/abs/2611.32393"
       ],
-      "script": "第5條專欄來看兩大AI巨頭在數學圈的正面較勁！昨天Anthropic才剛在GitHub公開VP不等於VNP的形式化數學專案，沒想到OpenAI今天就立刻在GitHub貼出11月23日就已經完成的預印本，直接宣示「我們比Anthropic更早解出來」！只能說現在頂尖實驗室連純數學證明的誰先誰後都要拿出來拚個高下。",
+      "script": "第5條專欄來看Hugging Face今日論文精選的超酷架構！一篇名為分形神經合成FNS的研究，想解決邊緣晶片Flash記憶體不夠放模型權重的痛點。作者直接不存龐大的權重矩陣了，而是只存一個常數級24位元組的座標種子，推論時再透過數學動力學動態生成權重！如果這個方法能規模化，以後智慧手錶或物聯網小晶片塞進強大AI模型就不再是夢了。",
       "screenshot_image": "episode/screenshots/col_5.png"
     }
   ],
   "flash_news": [
     {
       "num": 1,
-      "title": "微軟爆發歷史級雲端大當機後，內部備忘錄顯示高層已宣布進入「紅色警戒」",
-      "source": "Reuters / HN",
-      "url": "https://www.reuters.com/business/microsoft-declares-code-red-after-historic-outage-internal-memos-show-2026-11-24/"
+      "title": "OpenAI 合併 ChatGPT Chat 與 Work 為單一計量，重度用戶更快撞牆",
+      "source": "TechCrunch AI",
+      "url": "https://techcrunch.com/2026/11/25/openai-says-heavy-chatgpt-users-may-hit-limits-sooner-as-it-merges-chat-and-work/"
     },
     {
       "num": 2,
-      "title": "紐約時報發信警告自由攝影師暫勿更新 Photoshop 2027，憂心隱藏 AI 功能",
-      "source": "The Verge AI",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/1041227/the-new-york-times-warns-photographers-not-to-update-photoshop-over-ai-features"
+      "title": "Google DeepMind 推出 Mass Spec Skills，在 Antigravity 解析分子質譜",
+      "source": "Google DeepMind",
+      "url": "https://deepmind.google/blog/interpreting-mass-spectra-with-google-antigravity/"
     },
     {
       "num": 3,
-      "title": "Meta 將 Muse AI 助理整合進 Instagram 私訊，並攜手 Walmart 推黑五購物",
+      "title": "紐約州下令禁售 AI 聊天機器人玩具 5 年，點名兒童安全與情緒風險",
       "source": "TechCrunch AI",
-      "url": "https://techcrunch.com/2026/11/24/meta-brings-its-muse-ai-assistant-directly-into-instagram-dms/"
+      "url": "https://techcrunch.com/2026/11/25/want-to-buy-your-kid-an-ai-toy-this-christmas-not-in-new-york/"
     },
     {
       "num": 4,
-      "title": "業餘天文學家靠 OpenAI Codex 與 Astra 在 NASA 公開資料找出系外行星候選",
-      "source": "OpenAI News",
-      "url": "https://openai.com/index/searching-for-distant-planets-with-astra"
+      "title": "1Password 揭露 2026 年 11 月資安事件最新說明，HN 衝破 1,004 分",
+      "source": "Hacker News",
+      "url": "https://1password.com/blog/update-on-nov-2026-security-incident"
     },
     {
       "num": 5,
-      "title": "大衛芬奇 Netflix 新片早期試映疑因使用生成式 AI 視覺效果遭影迷吐槽",
+      "title": "Google 個人化 AI 影片串流專利「My Channel」遭駁回，內容業憂廣告轟炸",
       "source": "The Verge AI",
-      "url": "https://www.theverge.com/entertainment/1041417/david-fincher-netflix-cliff-booth-ai-interpositive"
+      "url": "https://www.theverge.com/entertainment/1042221/google-my-channel-ai-video-patent"
     },
     {
       "num": 6,
-      "title": "HF 論文焦點：無痕跡潛在推理恐讓 CoT 監控失效；單句文字即可辨識作者模型",
-      "source": "HF Daily Papers",
-      "url": "https://huggingface.co/papers/2611.31015"
+      "title": "Dario Amodei 否認讓渡人類控制權，開發者實測花 35B Opus 5.5 Tokens 寫交響曲",
+      "source": "TechCrunch / HN",
+      "url": "https://techcrunch.com/2026/11/25/anthropics-dario-amodei-calls-accusations-of-surrendering-human-control-to-ai-absurd/"
     }
   ],
-  "flash_script": "接下來快速掃過今天的6條AI快訊！第1條，微軟在經歷歷史級大當機後，內部備忘錄曝光已宣布進入紅色警戒全力修復穩定度。第2條，紐約時報發信警告攝影師先別更新Photoshop 2027，擔心隱藏AI修圖功能影響新聞真實性。第3條，Meta把Muse AI助理直接塞進Instagram私訊，還聯手Walmart讓用戶用AI買黑五特價。第4條，OpenAI分享業餘天文學家靠Codex與Astra在NASA公開數據裡挖出潛在系外行星。第5條，名導大衛芬奇的Netflix新片試映因畫面疑似使用AI修補遭到影迷吐槽。第6條，Hugging Face論文揭露無痕跡潛在推理可能讓思維鏈安全監控失效！",
+  "flash_script": "接下來快速掃過今天的6條AI快訊！第1條，OpenAI宣布合併ChatGPT的Chat和Work介面並改用單一用量計費，官方坦承重度用戶可能會更快遇到額度上限。第2條，Google DeepMind推出Mass Spec Skills，讓科學家能直接在Google Antigravity裡面輔助判讀串聯質譜並辨識分子結構。第3條，紐約州正式下令禁售AI聊天機器人玩具長達5年，保護兒童免受不當內容與情緒依賴風險。第4條，密碼管理器1Password公布11月資安事件最新調查進展，在Hacker News引發破千分關注。第5條，Google打造個人化AI生成影片與廣告串流的My Channel專利雖然遭到駁回，但仍可能上訴捲土重來。第6條，Anthropic執行長Dario Amodei駁斥放棄人類控制權的指控，同一時間有工程師花掉350億個Opus 5.5 Token寫了一首交響曲！",
   "outro": {
     "character_image": "character/opening_normal.png",
     "character_closed_image": "character/opening_normal_closed.png",
     "character_mode": "normal",
-    "script": "以上就是今天哈Gemi早報的全部內容！你支持音樂平台全面封殺純AI歌曲嗎？歡迎留言跟我聊聊，別忘了按讚訂閱開啟小鈴鐺，我們明天早上見，掰掰喵！"
+    "script": "以上就是今天哈Gemi早報的全部內容！如果喜歡這種高效率又帶點梗的AI早報，別忘了按讚訂閱開啟小鈴鐺，我們明天早上同一時間再見，掰掰喵！"
   }
 }
